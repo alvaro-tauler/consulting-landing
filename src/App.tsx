@@ -1,16 +1,588 @@
-import { useEffect, useRef, useState } from 'react'
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
+import { useEffect, useRef, useState, createContext, useContext } from 'react'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { BrowserRouter as Router, Routes, Route, Link, useParams, useLocation, useNavigationType, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Lenis from 'lenis'
+import Lottie from 'lottie-react'
+
+// Lenis context for scroll control
+const LenisContext = createContext<Lenis | null>(null)
+
+// Import animations
+import aiLettering from '../public/lettering-artificial-intelligence-with-robot-and-h-2025-11-05-04-40-43-utc.json'
+import ideaAnim from '../public/idea-for-business-success-and-project-management-2025-11-05-06-06-57-utc.json'
+import analyticsAnim from '../public/research-of-statistical-data-and-analytics-2025-11-05-06-06-57-utc.json'
+import dashboardAnim from '../public/data-dashboard-with-infographics-and-statistics-2025-11-05-06-06-56-utc.json'
+import financeAnim from '../public/artificial-intelligence-in-finance-management-2025-11-05-04-02-22-utc.json'
+import cloudAnim from '../public/cloud-computing-and-virtualization-technology-2025-11-05-06-06-55-utc.json'
 
 // Easing principal
 const easeOutExpo = [0.16, 1, 0.3, 1] as const
 
+// Scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  const navType = useNavigationType()
+  const lenis = useContext(LenisContext)
+  
+  useEffect(() => {
+    // Always scroll to top on forward navigation (PUSH/REPLACE)
+    if (navType !== 'POP') {
+      // Use both methods for reliability
+      window.scrollTo({ top: 0, behavior: 'instant' })
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true })
+      }
+    }
+  }, [pathname, navType, lenis])
+  
+  return null
+}
+
+// Language Selector Component
+function LanguageSelector() {
+  const { i18n } = useTranslation()
+  const [isOpen, setIsOpen] = useState(false)
+  
+  const currentLang = i18n.language === 'en' ? 'en' : 'es'
+  
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng)
+    setIsOpen(false)
+  }
+  
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-1.5 px-3 py-2 text-[#060357]/60 hover:text-[#060357] transition-colors text-sm tracking-wide"
+      >
+        <span className="uppercase font-medium">{currentLang}</span>
+        <svg 
+          width="10" 
+          height="10" 
+          viewBox="0 0 10 10" 
+          fill="none" 
+          className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+        >
+          <path d="M1 3L5 7L9 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <div 
+              className="fixed inset-0 z-40" 
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full right-0 mt-2 w-28 bg-white shadow-xl border border-[#060357]/5 py-2 z-50"
+            >
+              <button
+                onClick={() => changeLanguage('es')}
+                className={`w-full px-4 py-3 text-left text-sm hover:bg-[#f5f3ef] transition-colors ${
+                  currentLang === 'es' ? 'text-[#060357] font-medium' : 'text-[#060357]/60'
+                }`}
+              >
+                Español
+              </button>
+              <button
+                onClick={() => changeLanguage('en')}
+                className={`w-full px-4 py-3 text-left text-sm hover:bg-[#f5f3ef] transition-colors ${
+                  currentLang === 'en' ? 'text-[#060357] font-medium' : 'text-[#060357]/60'
+                }`}
+              >
+                English
+              </button>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
+// Service Detail Pages Data
+function ServiceDetailPage() {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const { t } = useTranslation()
+
+  const animationMap: Record<string, object> = {
+    'diagnostico': analyticsAnim,
+    'roadmap': cloudAnim,
+    'direccion': dashboardAnim,
+    'executive-cto': financeAnim
+  }
+
+  const photoMap: Record<string, string> = {
+    'diagnostico': '/equipo multidisciplinar ok.webp',
+    'roadmap': '/metodo probado ok.webp',
+    'direccion': '/equipo page ok.webp',
+    'executive-cto': '/tecnologia propia ok.webp'
+  }
+
+  if (!id || !animationMap[id]) return <div>{t('common.pageNotFound')}</div>
+
+  const serviceKey = id === 'executive-cto' ? 'executive_cto' : id
+
+  const renderContent = () => {
+    switch (id) {
+      case 'diagnostico':
+        return (
+          <>
+            <p>{t('service_detail.diagnostico.p1')}</p>
+            <p>{t('service_detail.diagnostico.p2')}</p>
+            <p className="font-serif text-2xl md:text-3xl italic text-[#060357] py-8">{t('service_detail.diagnostico.axes_title')}</p>
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="border-l-2 border-[#ff0000] pl-6 py-2">
+                <h4 className="font-bold mb-2 uppercase tracking-widest text-xs opacity-40">{t('service_detail.diagnostico.axis1_title')}</h4>
+                <p>{t('service_detail.diagnostico.axis1_desc')}</p>
+              </div>
+              <div className="border-l-2 border-[#ff0000] pl-6 py-2">
+                <h4 className="font-bold mb-2 uppercase tracking-widest text-xs opacity-40">{t('service_detail.diagnostico.axis2_title')}</h4>
+                <p>{t('service_detail.diagnostico.axis2_desc')}</p>
+              </div>
+              <div className="border-l-2 border-[#ff0000] pl-6 py-2">
+                <h4 className="font-bold mb-2 uppercase tracking-widest text-xs opacity-40">{t('service_detail.diagnostico.axis3_title')}</h4>
+                <p>{t('service_detail.diagnostico.axis3_desc')}</p>
+              </div>
+              <div className="border-l-2 border-[#ff0000] pl-6 py-2">
+                <h4 className="font-bold mb-2 uppercase tracking-widest text-xs opacity-40">{t('service_detail.diagnostico.axis4_title')}</h4>
+                <p>{t('service_detail.diagnostico.axis4_desc')}</p>
+              </div>
+            </div>
+            <p>{t('service_detail.diagnostico.p3')}</p>
+            <p>{t('service_detail.diagnostico.p4')}</p>
+            <ul className="space-y-4 my-8">
+              <li className="flex items-start gap-4"><span className="text-[#ff0000] font-serif">—</span> {t('service_detail.diagnostico.q1')}</li>
+              <li className="flex items-start gap-4"><span className="text-[#ff0000] font-serif">—</span> {t('service_detail.diagnostico.q2')}</li>
+              <li className="flex items-start gap-4"><span className="text-[#ff0000] font-serif">—</span> {t('service_detail.diagnostico.q3')}</li>
+              <li className="flex items-start gap-4"><span className="text-[#ff0000] font-serif">—</span> {t('service_detail.diagnostico.q4')}</li>
+            </ul>
+            <div className="bg-[#060357] text-white p-10 md:p-16 my-16 rounded-sm">
+              <h4 className="font-serif text-2xl md:text-3xl mb-8 italic">{t('service_detail.diagnostico.result_title')}</h4>
+              <ul className="space-y-4 opacity-80">
+                <li>• {t('service_detail.diagnostico.result1')}</li>
+                <li>• {t('service_detail.diagnostico.result2')}</li>
+                <li>• {t('service_detail.diagnostico.result3')}</li>
+              </ul>
+            </div>
+            <p className="font-serif text-3xl md:text-4xl text-center py-12 italic">{t('service_detail.diagnostico.conclusion')}</p>
+          </>
+        )
+      case 'roadmap':
+        return (
+          <>
+            <p>{t('service_detail.roadmap.p1')}</p>
+            <p>{t('service_detail.roadmap.p2')}</p>
+            <p className="font-serif text-2xl md:text-3xl italic text-[#060357] py-8 text-center">{t('service_detail.roadmap.questions_title')}</p>
+            <div className="grid md:grid-cols-2 gap-12 my-12">
+              <ul className="space-y-6">
+                <li className="flex items-start gap-4"><span className="text-[#ff0000] font-serif">—</span> {t('service_detail.roadmap.q1')}</li>
+                <li className="flex items-start gap-4"><span className="text-[#ff0000] font-serif">—</span> {t('service_detail.roadmap.q2')}</li>
+              </ul>
+              <ul className="space-y-6">
+                <li className="flex items-start gap-4"><span className="text-[#ff0000] font-serif">—</span> {t('service_detail.roadmap.q3')}</li>
+                <li className="flex items-start gap-4"><span className="text-[#ff0000] font-serif">—</span> {t('service_detail.roadmap.q4')}</li>
+              </ul>
+            </div>
+            <p className="font-serif text-2xl md:text-3xl italic text-[#060357] py-8">{t('service_detail.roadmap.priority_title')}</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              {[
+                t('service_detail.roadmap.priority1'),
+                t('service_detail.roadmap.priority2'),
+                t('service_detail.roadmap.priority3'),
+                t('service_detail.roadmap.priority4')
+              ].map(item => (
+                <div key={item} className="border border-[#060357]/10 p-6 text-center flex items-center justify-center min-h-[120px]">
+                  <span className="text-sm font-bold uppercase tracking-widest opacity-60 leading-tight">{item}</span>
+                </div>
+              ))}
+            </div>
+            <p>{t('service_detail.roadmap.p3')}</p>
+            <p>{t('service_detail.roadmap.p4')}</p>
+          </>
+        )
+      case 'direccion':
+        return (
+          <>
+            <p>{t('service_detail.direccion.p1')}</p>
+            <p>{t('service_detail.direccion.p2')}</p>
+            <div className="bg-[#f5f3ef] border border-[#060357]/10 p-10 md:p-16 my-16">
+              <h4 className="font-serif text-2xl md:text-3xl mb-10 italic">{t('service_detail.direccion.function_title')}</h4>
+              <ul className="grid md:grid-cols-2 gap-x-12 gap-y-6">
+                <li className="flex gap-4 items-center">
+                  <span className="w-8 h-px bg-[#ff0000]"></span>
+                  <span>{t('service_detail.direccion.function1')}</span>
+                </li>
+                <li className="flex gap-4 items-center">
+                  <span className="w-8 h-px bg-[#ff0000]"></span>
+                  <span>{t('service_detail.direccion.function2')}</span>
+                </li>
+                <li className="flex gap-4 items-center">
+                  <span className="w-8 h-px bg-[#ff0000]"></span>
+                  <span>{t('service_detail.direccion.function3')}</span>
+                </li>
+                <li className="flex gap-4 items-center">
+                  <span className="w-8 h-px bg-[#ff0000]"></span>
+                  <span>{t('service_detail.direccion.function4')}</span>
+                </li>
+              </ul>
+            </div>
+            <p className="text-center font-bold uppercase tracking-widest text-xs opacity-40 mb-8">{t('service_detail.direccion.layer_intro')}</p>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-12 mb-16">
+              {[
+                t('service_detail.direccion.layer1'),
+                t('service_detail.direccion.layer2'),
+                t('service_detail.direccion.layer3'),
+                t('service_detail.direccion.layer4')
+              ].map(item => (
+                <span key={item} className="font-serif text-2xl italic">{item}</span>
+              ))}
+            </div>
+            <p>{t('service_detail.direccion.p3')}</p>
+            <p>{t('service_detail.direccion.p4')}</p>
+            <p className="font-serif text-2xl md:text-3xl text-[#060357] py-8">{t('service_detail.direccion.conclusion')}</p>
+          </>
+        )
+      case 'executive-cto':
+        return (
+          <>
+            <p>{t('service_detail.executive_cto.p1')}</p>
+            <p>{t('service_detail.executive_cto.p2')}</p>
+            <h4 className="font-bold text-center uppercase tracking-[0.3em] text-[10px] opacity-40 my-12">{t('service_detail.executive_cto.perspectives_title')}</h4>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-[#060357]/10 border border-[#060357]/10 mb-16">
+              {[
+                { t: t('service_detail.executive_cto.perspective1_title'), d: t('service_detail.executive_cto.perspective1_desc') },
+                { t: t('service_detail.executive_cto.perspective2_title'), d: t('service_detail.executive_cto.perspective2_desc') },
+                { t: t('service_detail.executive_cto.perspective3_title'), d: t('service_detail.executive_cto.perspective3_desc') },
+                { t: t('service_detail.executive_cto.perspective4_title'), d: t('service_detail.executive_cto.perspective4_desc') }
+              ].map(item => (
+                <div key={item.t} className="bg-white p-8 space-y-4">
+                  <h5 className="font-serif text-xl italic">{item.t}</h5>
+                  <p className="text-sm opacity-60 leading-relaxed">{item.d}</p>
+                </div>
+              ))}
+            </div>
+            <p className="font-serif text-2xl md:text-3xl italic text-[#060357] py-8">{t('service_detail.executive_cto.participation_title')}</p>
+            <ul className="space-y-4 mb-16">
+              <li className="flex gap-4 items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ff0000]"></span>
+                <span>{t('service_detail.executive_cto.participation1')}</span>
+              </li>
+              <li className="flex gap-4 items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ff0000]"></span>
+                <span>{t('service_detail.executive_cto.participation2')}</span>
+              </li>
+              <li className="flex gap-4 items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ff0000]"></span>
+                <span>{t('service_detail.executive_cto.participation3')}</span>
+              </li>
+              <li className="flex gap-4 items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ff0000]"></span>
+                <span>{t('service_detail.executive_cto.participation4')}</span>
+              </li>
+            </ul>
+            <p className="text-center md:text-left font-serif text-3xl md:text-4xl italic leading-tight">{t('service_detail.executive_cto.conclusion')}</p>
+          </>
+        )
+      default:
+        return null
+    }
+  }
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="bg-[#f5f3ef] min-h-screen pt-32 pb-24 relative overflow-hidden"
+    >
+      <SubtleBlur />
+      
+      {/* Background Large Animation - Subtle watermark effect */}
+      <div className="absolute top-0 right-[-10%] w-[60%] h-[60%] opacity-[0.03] pointer-events-none z-0">
+        <Lottie animationData={animationMap[id]} loop={true} />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+        {/* Navigation */}
+        <button 
+          onClick={() => navigate(-1)} 
+          className="inline-flex items-center gap-2 text-[#060357]/40 hover:text-[#060357] transition-colors mb-20 group cursor-pointer"
+        >
+          <span className="text-xl group-hover:-translate-x-1 transition-transform">←</span>
+          <span className="text-xs uppercase tracking-widest font-bold">{t('service_detail.back')}</span>
+        </button>
+
+        {/* Hero Section - Pure Typography & Symbol */}
+        <header className="mb-24 lg:mb-40">
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-9">
+              <motion.h1 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, ease: easeOutExpo }}
+                className="font-serif text-[#060357] text-[clamp(3rem,10vw,8rem)] leading-[0.85] tracking-tighter mb-12 text-balance"
+              >
+                {t(`service_detail.${serviceKey}.title`)}
+              </motion.h1>
+              <motion.p 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: easeOutExpo }}
+                className="font-serif text-3xl md:text-5xl italic text-[#060357]/60 leading-[1.1] max-w-4xl"
+              >
+                {t(`service_detail.${serviceKey}.subtitle`)}
+              </motion.p>
+            </div>
+            <div className="lg:col-span-3 flex justify-center lg:justify-end">
+              <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.2, ease: easeOutExpo }}
+                className="w-40 h-40 md:w-64 md:h-64 opacity-90 mix-blend-multiply"
+              >
+                <Lottie animationData={animationMap[id]} loop={true} />
+              </motion.div>
+            </div>
+          </div>
+        </header>
+
+        {/* Main Content Flow - Centered and Impeccable */}
+        <div className="grid lg:grid-cols-12 gap-12">
+          <article className="lg:col-span-8 lg:col-start-3">
+            <div className="prose prose-2xl prose-indigo text-[#060357] max-w-none">
+              <div className="content-render space-y-16">
+                {renderContent()}
+              </div>
+            </div>
+
+            {/* CTA Section - Minimalist & Powerful */}
+            <footer className="mt-40 pt-24 border-t border-[#060357]/10">
+              <div className="flex flex-col items-center text-center space-y-12">
+                <h3 className="font-serif text-4xl md:text-7xl text-[#060357] leading-[1] text-balance tracking-tighter italic">
+                  {t('service_detail.cta_title')}
+                </h3>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <a 
+                    href="/#contacto"
+                    className="inline-block bg-[#060357] text-[#f5f3ef] px-20 py-7 text-xs tracking-[0.4em] uppercase hover:bg-[#ff0000] transition-all duration-500 shadow-2xl shadow-[#060357]/20 font-bold"
+                  >
+                    {t('service_detail.cta_button')}
+                  </a>
+                </motion.div>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+// Legal Pages
+function LegalPage() {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const { t } = useTranslation()
+
+  if (!id || !['privacy', 'cookies', 'legal'].includes(id)) {
+    return <div className="pt-40 px-6 text-center">{t('common.pageNotFound')}</div>
+  }
+
+  const titleMap: Record<string, string> = {
+    'privacy': t('legal.privacy.title'),
+    'cookies': t('legal.cookies.title'),
+    'legal': t('legal.legal_notice.title')
+  }
+
+  const renderLegalContent = () => {
+    switch (id) {
+      case 'privacy':
+        return (
+          <div className="space-y-8">
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.privacy.section1_title')}</h2>
+              <p>{t('legal.privacy.section1_content1')}</p>
+              <p>{t('legal.privacy.section1_content2')}</p>
+              <p>{t('legal.privacy.section1_content3')}</p>
+              <p>{t('legal.privacy.section1_content4')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.privacy.section2_title')}</h2>
+              <p>{t('legal.privacy.section2_intro')}</p>
+              <ul className="list-disc pl-6 space-y-2 mt-4">
+                <li>{t('legal.privacy.section2_item1')}</li>
+                <li>{t('legal.privacy.section2_item2')}</li>
+                <li>{t('legal.privacy.section2_item3')}</li>
+                <li>{t('legal.privacy.section2_item4')}</li>
+              </ul>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.privacy.section3_title')}</h2>
+              <p>{t('legal.privacy.section3_intro')}</p>
+              <ul className="list-disc pl-6 space-y-2 mt-4">
+                <li>{t('legal.privacy.section3_item1')}</li>
+                <li>{t('legal.privacy.section3_item2')}</li>
+                <li>{t('legal.privacy.section3_item3')}</li>
+              </ul>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.privacy.section4_title')}</h2>
+              <p>{t('legal.privacy.section4_content')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.privacy.section5_title')}</h2>
+              <p>{t('legal.privacy.section5_content')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.privacy.section6_title')}</h2>
+              <p>{t('legal.privacy.section6_content')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.privacy.section7_title')}</h2>
+              <p>{t('legal.privacy.section7_content')}</p>
+            </section>
+          </div>
+        )
+      case 'cookies':
+        return (
+          <div className="space-y-8">
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.cookies.section1_title')}</h2>
+              <p>{t('legal.cookies.section1_content')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.cookies.section2_title')}</h2>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-bold">{t('legal.cookies.section2_type1_title')}</h3>
+                  <ul className="list-disc pl-6 space-y-1">
+                    <li>{t('legal.cookies.section2_type1_item1')}</li>
+                    <li>{t('legal.cookies.section2_type1_item2')}</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold">{t('legal.cookies.section2_type2_title')}</h3>
+                  <ul className="list-disc pl-6 space-y-1">
+                    <li>{t('legal.cookies.section2_type2_item1')}</li>
+                    <li>{t('legal.cookies.section2_type2_item2')}</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold">{t('legal.cookies.section2_type3_title')}</h3>
+                  <ul className="list-disc pl-6 space-y-1">
+                    <li>{t('legal.cookies.section2_type3_item1')}</li>
+                    <li>{t('legal.cookies.section2_type3_item2')}</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.cookies.section3_title')}</h2>
+              <p>{t('legal.cookies.section3_content1')}</p>
+              <p className="mt-4">{t('legal.cookies.section3_content2')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.cookies.section4_title')}</h2>
+              <p>{t('legal.cookies.section4_content')}</p>
+            </section>
+          </div>
+        )
+      case 'legal':
+        return (
+          <div className="space-y-8">
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.legal_notice.section1_title')}</h2>
+              <p>{t('legal.legal_notice.section1_content1')}</p>
+              <p>{t('legal.legal_notice.section1_content2')}</p>
+              <p>{t('legal.legal_notice.section1_content3')}</p>
+              <p>{t('legal.legal_notice.section1_content4')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.legal_notice.section2_title')}</h2>
+              <p>{t('legal.legal_notice.section2_content')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.legal_notice.section3_title')}</h2>
+              <p>{t('legal.legal_notice.section3_content1')}</p>
+              <p className="mt-4">{t('legal.legal_notice.section3_content2')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.legal_notice.section4_title')}</h2>
+              <p>{t('legal.legal_notice.section4_content1')}</p>
+              <p className="mt-4">{t('legal.legal_notice.section4_content2')}</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold mb-4">{t('legal.legal_notice.section5_title')}</h2>
+              <p>{t('legal.legal_notice.section5_content1')}</p>
+              <p className="mt-4">{t('legal.legal_notice.section5_content2')}</p>
+            </section>
+          </div>
+        )
+      default:
+        return null
+    }
+  }
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="bg-[#f5f3ef] min-h-screen pt-40 pb-24"
+    >
+      <SubtleBlur />
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <button 
+          onClick={() => navigate(-1)} 
+          className="inline-flex items-center gap-2 text-[#060357]/40 hover:text-[#060357] transition-colors mb-12 group cursor-pointer"
+        >
+          <span className="text-xl group-hover:-translate-x-1 transition-transform">←</span>
+          <span className="text-xs uppercase tracking-widest font-bold">{t('legal.back')}</span>
+        </button>
+        
+        <header className="mb-16">
+          <h1 className="font-serif text-[#060357] text-4xl md:text-6xl mb-4 italic">
+            {titleMap[id]}
+          </h1>
+          <p className="text-[#060357]/40 text-sm uppercase tracking-widest">
+            {t('legal.last_updated')}: 15/09/2025
+          </p>
+        </header>
+
+        <div className="prose prose-lg max-w-none text-[#060357]/80 leading-relaxed">
+          {renderLegalContent()}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
 // Animation variants
 const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
+    transition: { duration: 1, ease: easeOutExpo }
+  }
+}
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
     transition: { duration: 0.8, ease: easeOutExpo }
   }
 }
@@ -19,39 +591,17 @@ const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 }
   }
-}
-
-const staggerItem = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: easeOutExpo }
-  }
-}
-
-// Scroll Progress Bar Component
-function ScrollProgress() {
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  })
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-[3px] bg-white/30 origin-left z-[9999]"
-      style={{ scaleX }}
-    />
-  )
 }
 
 // Navbar Component
 function Navbar({ onMenuOpen }: { onMenuOpen: () => void }) {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+  const { t } = useTranslation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,51 +611,109 @@ function Navbar({ onMenuOpen }: { onMenuOpen: () => void }) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const navLinks = [
+    { label: t('nav.about'), href: isHome ? '#about' : '/#about' },
+    { label: t('nav.services'), href: isHome ? '#servicios' : '/#servicios', hasDropdown: true },
+    { label: t('nav.contact'), href: isHome ? '#contacto' : '/#contacto' }
+  ]
+
+  const services = [
+    { label: t('services_menu.diagnostico'), href: '/servicios/diagnostico' },
+    { label: t('services_menu.roadmap'), href: '/servicios/roadmap' },
+    { label: t('services_menu.direccion'), href: '/servicios/direccion' },
+    { label: t('services_menu.executive_cto'), href: '/servicios/executive-cto' }
+  ]
+
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'py-4 bg-[#0a1628]/90 backdrop-blur-xl'
+          ? 'py-4 bg-[#f5f3ef]/90 backdrop-blur-md'
           : 'py-6'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: easeOutExpo }}
+      transition={{ duration: 0.8, ease: easeOutExpo }}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <motion.a
-          href="#"
-          className="text-white font-bold text-xl tracking-tight"
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between">
+        <Link
+          to="/"
+          className="flex items-center"
         >
-          tauler
-        </motion.a>
+          <img 
+            src="/logo tauler.png" 
+            alt="Tauler Group Logo" 
+            className="h-8 md:h-10 w-auto"
+          />
+        </Link>
 
-        <div className="hidden md:flex items-center gap-8">
-          <a href="#problema" className="text-white/70 hover:text-white transition-colors text-sm">
-            El problema
-          </a>
-          <a href="#servicios" className="text-white/70 hover:text-white transition-colors text-sm">
-            Servicios
-          </a>
-          <a href="#contacto" className="text-white/70 hover:text-white transition-colors text-sm">
-            Contacto
-          </a>
-          <a 
-            href="#contacto" 
-            className="border border-white/30 hover:bg-white hover:text-[#0a1628] text-white px-5 py-2.5 rounded-full text-sm transition-all duration-300"
-          >
-            Hablemos
-          </a>
+        <div className="hidden md:flex items-center gap-10">
+          {navLinks.map(link => (
+            <div 
+              key={link.label}
+              className="relative group"
+              onMouseEnter={() => link.hasDropdown && setIsServicesOpen(true)}
+              onMouseLeave={() => link.hasDropdown && setIsServicesOpen(false)}
+            >
+              <a 
+                href={link.href} 
+                className="text-[#060357]/60 hover:text-[#060357] transition-colors text-sm tracking-wide py-2 flex items-center gap-1"
+              >
+                {link.label}
+                {link.hasDropdown && (
+                  <svg 
+                    width="10" 
+                    height="10" 
+                    viewBox="0 0 10 10" 
+                    fill="none" 
+                    className={`transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path d="M1 3L5 7L9 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+              </a>
+
+              {link.hasDropdown && (
+                <AnimatePresence>
+                  {isServicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 w-64 bg-white shadow-xl border border-[#060357]/5 py-4 z-50"
+                    >
+                      {services.map(service => (
+                        <Link
+                          key={service.href}
+                          to={service.href}
+                          className="block px-6 py-3 text-sm text-[#060357]/60 hover:text-[#060357] hover:bg-[#f5f3ef] transition-colors"
+                          onClick={() => setIsServicesOpen(false)}
+                        >
+                          {service.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              )}
+            </div>
+          ))}
+          
+          <LanguageSelector />
         </div>
 
-        <button
-          onClick={onMenuOpen}
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          aria-label="Abrir menú"
-        >
-          <span className="block w-6 h-0.5 bg-white"></span>
-          <span className="block w-6 h-0.5 bg-white"></span>
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+          <LanguageSelector />
+          <button
+            onClick={onMenuOpen}
+            className="flex flex-col gap-1.5 p-2"
+            aria-label={t('nav.openMenu')}
+          >
+            <span className="block w-6 h-[1.5px] bg-[#060357]"></span>
+            <span className="block w-6 h-[1.5px] bg-[#060357]"></span>
+          </button>
+        </div>
       </div>
     </motion.nav>
   )
@@ -113,6 +721,24 @@ function Navbar({ onMenuOpen }: { onMenuOpen: () => void }) {
 
 // Mobile Menu Component
 function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const { t } = useTranslation()
+
+  const navLinks = [
+    { label: t('nav.about'), href: isHome ? '#about' : '/#about' },
+    { label: t('nav.services'), href: isHome ? '#servicios' : '/#servicios', hasDropdown: true },
+    { label: t('nav.contact'), href: isHome ? '#contacto' : '/#contacto' }
+  ]
+
+  const services = [
+    { label: t('services_menu.diagnostico'), href: '/servicios/diagnostico' },
+    { label: t('services_menu.roadmap'), href: '/servicios/roadmap' },
+    { label: t('services_menu.direccion'), href: '/servicios/direccion' },
+    { label: t('services_menu.executive_cto'), href: '/servicios/executive-cto' }
+  ]
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -121,7 +747,7 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 z-50"
+            className="fixed inset-0 bg-[#060357]/20 backdrop-blur-sm z-50"
             onClick={onClose}
           />
           
@@ -129,53 +755,100 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ duration: 0.4, ease: easeOutExpo }}
-            className="fixed top-0 right-0 bottom-0 w-80 bg-[#0a1628] z-50 p-8 flex flex-col"
+            transition={{ duration: 0.5, ease: easeOutExpo }}
+            className="fixed top-0 right-0 bottom-0 w-full max-w-md bg-[#f5f3ef] z-50 p-8 flex flex-col overflow-y-auto"
           >
             <button
               onClick={onClose}
-              className="self-end p-2 text-white/60 hover:text-white transition-colors"
-              aria-label="Cerrar menú"
+              className="self-end p-2 text-[#060357]/60 hover:text-[#060357] transition-colors"
+              aria-label={t('nav.closeMenu')}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
 
-            <div className="mt-8 mb-12">
-              <span className="text-white font-bold text-xl">tauler</span>
+            <div className="mt-8 mb-16">
+              <Link to="/" onClick={onClose}>
+                <img 
+                  src="/logo tauler.png" 
+                  alt="Tauler Group Logo" 
+                  className="h-10 w-auto"
+                />
+              </Link>
             </div>
 
             <nav className="flex flex-col gap-6">
-              {[
-                { label: 'El problema', href: '#problema' },
-                { label: 'Servicios', href: '#servicios' },
-                { label: 'Contacto', href: '#contacto' }
-              ].map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  onClick={onClose}
-                  className="text-2xl font-light text-white/80 hover:text-white transition-colors"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 * index }}
-                >
-                  {item.label}
-                </motion.a>
+              {navLinks.map((item, index) => (
+                <div key={item.label} className="flex flex-col gap-4">
+                  <div className="flex items-center justify-between">
+                    <motion.a
+                      href={item.href}
+                      onClick={(e) => {
+                        if (item.hasDropdown) {
+                          e.preventDefault()
+                          setIsServicesOpen(!isServicesOpen)
+                        } else {
+                          onClose()
+                        }
+                      }}
+                      className="font-serif text-4xl text-[#060357]/80 hover:text-[#060357] transition-colors flex items-center gap-4"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 * index }}
+                    >
+                      {item.label}
+                      {item.hasDropdown && (
+                        <svg 
+                          width="20" 
+                          height="20" 
+                          viewBox="0 0 10 10" 
+                          fill="none" 
+                          className={`transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`}
+                        >
+                          <path d="M1 3L5 7L9 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      )}
+                    </motion.a>
+                  </div>
+
+                  {item.hasDropdown && (
+                    <AnimatePresence>
+                      {isServicesOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="flex flex-col gap-4 pl-4 overflow-hidden"
+                        >
+                          {services.map(service => (
+                            <Link
+                              key={service.href}
+                              to={service.href}
+                              onClick={onClose}
+                              className="text-[#060357]/60 text-xl font-serif italic hover:text-[#060357]"
+                            >
+                              {service.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
               ))}
             </nav>
 
             <motion.a
-              href="#contacto"
+              href={isHome ? '#contacto' : '/#contacto'}
               onClick={onClose}
-              className="mt-auto border border-white/30 text-white py-4 rounded-full text-center hover:bg-white hover:text-[#0a1628] transition-all"
+              className="mt-12 border border-[#060357]/20 text-[#060357] py-4 text-center hover:bg-[#060357] hover:text-[#f5f3ef] transition-all text-sm tracking-wide font-bold"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Hablemos
+              {t('nav.letsTalk')}
             </motion.a>
           </motion.div>
         </>
@@ -184,113 +857,204 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
   )
 }
 
+// Subtle Background Animation for cream sections
+function SubtleBlur() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <motion.div
+        animate={{
+          opacity: [0.2, 0.4, 0.2],
+          scale: [1, 1.3, 1],
+          x: [0, 40, 0],
+          y: [0, -30, 0],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{ backgroundColor: '#3b82f6' }}
+        className="absolute top-[-15%] left-[5%] w-[45%] h-[45%] rounded-full blur-[100px]"
+      />
+      <motion.div
+        animate={{
+          opacity: [0.15, 0.35, 0.15],
+          scale: [1.3, 1, 1.3],
+          x: [0, -50, 0],
+          y: [0, 40, 0],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+        style={{ backgroundColor: '#2563eb' }}
+        className="absolute bottom-[-20%] right-[0%] w-[55%] h-[55%] rounded-full blur-[140px]"
+      />
+      <motion.div
+        animate={{
+          opacity: [0.1, 0.25, 0.1],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 4,
+        }}
+        style={{ backgroundColor: '#60a5fa' }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[30%] rounded-full blur-[120px]"
+      />
+    </div>
+  )
+}
+
 // Hero Section
 function HeroSection() {
   const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  })
+  const { t } = useTranslation()
+  
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   return (
     <section
       ref={ref}
-      className="min-h-screen bg-[#2339E8] flex flex-col justify-center items-center px-6 pt-24 pb-16"
+      className="min-h-screen bg-[#f5f3ef] flex flex-col items-center justify-center relative overflow-hidden pt-24 pb-12"
     >
-      <motion.div
-        className="max-w-5xl mx-auto text-center"
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Main Headline */}
-        <motion.h1
-          variants={fadeInUp}
-          className="text-white text-5xl md:text-7xl lg:text-[90px] font-bold leading-[1.05] tracking-tight mb-8"
-        >
-          El problema no es
-          <br />
-          la IA.{' '}
-          <span className="relative inline-block">
-            <span className="relative z-10 italic">Es el criterio.</span>
-            <span className="absolute inset-0 bg-[#0a1628] rounded-lg -skew-x-3 scale-105"></span>
-          </span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          variants={fadeInUp}
-          className="text-white/80 text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed"
-        >
-          La mayoría de empresas no fracasan con la IA por falta de tecnología. 
-          Fracasan porque nadie les dijo qué problema resolver primero, 
-          ni si merecía la pena resolverlo.
-        </motion.p>
-
-        {/* Quote */}
-        <motion.div
-          variants={fadeInUp}
-          className="border-t border-white/20 pt-12 max-w-2xl mx-auto"
-        >
-          <p className="text-white/60 text-lg md:text-xl italic">
-            "El 87% de los proyectos de IA nunca llegan a producción. 
-            No es un problema técnico. Es un problema de hacer las preguntas correctas."
-          </p>
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+      <SubtleBlur />
+      
+      {/* Background Large Animation - Subtle watermark effect like in detail pages */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] opacity-[0.03] pointer-events-none z-0">
+        <Lottie animationData={aiLettering} loop={true} />
+      </div>
+      
+      <motion.div 
+        className="relative z-10 text-center px-6 max-w-7xl mx-auto flex flex-col items-center justify-center min-h-[70vh]"
+        style={{ y, opacity }}
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="w-full flex flex-col items-center"
         >
-          <div className="w-1 h-2 bg-white/50 rounded-full" />
+          {/* Main Headline - Significant scale for maximum impact */}
+          <motion.h1
+            variants={fadeInUp}
+            className="font-serif text-[#060357] text-[clamp(3.5rem,10vw,11rem)] leading-[0.85] tracking-tighter mb-12 text-balance"
+          >
+            {t('hero.title1')}
+            <br />
+            <span className="italic font-medium text-[#060357]/80">{t('hero.title2')}</span>
+          </motion.h1>
+
+          <div className="flex flex-col items-center space-y-12 w-full">
+            {/* Subtitle - More prominent and elegant */}
+            <motion.p
+              variants={fadeInUp}
+              className="text-[#060357] text-xl md:text-2xl lg:text-3xl max-w-3xl mx-auto leading-tight font-serif italic px-4 opacity-70"
+            >
+              {t('hero.subtitle')}
+            </motion.p>
+
+            {/* CTA - Solid presence */}
+            <motion.div variants={fadeInUp} className="pt-8">
+              <a 
+                href="#contacto"
+                className="inline-block bg-[#060357] text-[#f5f3ef] px-14 py-6 text-xs tracking-[0.3em] uppercase hover:bg-[#ff0000] transition-all duration-500 shadow-2xl shadow-[#060357]/20 font-bold"
+              >
+                {t('hero.cta')}
+              </a>
+            </motion.div>
+          </div>
         </motion.div>
       </motion.div>
     </section>
   )
 }
 
-// Problem Section
-function ProblemSection() {
+// About Section
+function AboutSection() {
+  const { t } = useTranslation()
+
   return (
-    <section className="bg-[#0a1628] py-24 md:py-32" id="problema">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="bg-[#f5f3ef] py-24 md:py-32 relative overflow-hidden" id="about">
+      <SubtleBlur />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         <motion.div
-          className="grid lg:grid-cols-2 gap-16"
+          className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
         >
-          {/* Left */}
-          <motion.div variants={fadeInUp}>
-            <span className="text-[#2339E8] text-sm font-medium uppercase tracking-widest mb-6 block">
-              El diagnóstico
-            </span>
-            <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-              Tu empresa no necesita más IA. Necesita saber para qué.
-            </h2>
+          {/* Left - Content */}
+          <motion.div variants={fadeInUp} className="lg:col-span-8 space-y-12">
+            <div>
+              <span className="text-[#060357]/40 text-xs tracking-widest uppercase block mb-8">
+                {t('about.label')}
+              </span>
+              <h2 className="font-serif text-[#060357] text-3xl md:text-5xl lg:text-7xl leading-[1.1] tracking-tight">
+                {t('about.title1')}
+                <br />
+                <span className="italic font-medium text-[#060357]/80">{t('about.title2')}</span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              <div className="space-y-6">
+                <p className="text-[#060357]/80 text-lg leading-relaxed font-medium">
+                  {t('about.intro')}
+                </p>
+                <ul className="space-y-3 text-[#060357]/70 text-base">
+                  <li className="flex gap-3">
+                    <span className="text-[#060357]/30">—</span>
+                    <span>{t('about.point1')}</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-[#060357]/30">—</span>
+                    <span>{t('about.point2')}</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-[#060357]/30">—</span>
+                    <span>{t('about.point3')}</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-[#060357]/30">—</span>
+                    <span>{t('about.point4')}</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="space-y-6">
+                <p className="text-[#060357]/70 text-base leading-relaxed">
+                  {t('about.description1')}
+                </p>
+                <p className="text-[#060357]/70 text-base leading-relaxed">
+                  {t('about.description2')}
+                </p>
+                <div className="pt-4">
+                  <a href="#servicios" className="group flex items-center gap-3 text-[#060357] font-medium tracking-wide text-sm">
+                    {t('about.link')}
+                    <span className="w-8 h-[1px] bg-[#060357] group-hover:w-12 transition-all duration-300"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Right */}
-          <motion.div variants={fadeInUp} className="space-y-6">
-            <p className="text-white/70 text-lg md:text-xl leading-relaxed">
-              Llevas meses oyendo que "hay que hacer algo con IA". Te han vendido demos 
-              espectaculares que nunca escalaron. Has invertido en formación que no cambió nada. 
-              Y sigues sin tener claro por dónde empezar.
-            </p>
-            <p className="text-white/50 text-lg leading-relaxed">
-              El problema no es la tecnología. Es que nadie se ha sentado contigo a entender 
-              tu negocio antes de proponer soluciones. A separar el ruido del valor real. 
-              A decirte "esto no" cuando toca.
-            </p>
-            <p className="text-white/70 text-lg leading-relaxed font-medium">
-              Nosotros empezamos por ahí.
-            </p>
+          {/* Right - Animation */}
+          <motion.div 
+            variants={fadeIn} 
+            className="lg:col-span-4 flex justify-center lg:justify-end"
+          >
+            <div className="w-full max-w-[320px] aspect-square p-4">
+              <Lottie animationData={ideaAnim} loop={true} />
+            </div>
           </motion.div>
         </motion.div>
       </div>
@@ -298,77 +1062,111 @@ function ProblemSection() {
   )
 }
 
-// Differentiation Section
-function DifferentiationSection() {
+// What We Do / Don't Do Section
+function ApproachSection() {
+  const [mousePos1, setMousePos1] = useState({ x: 0, y: 0 })
+  const [mousePos2, setMousePos2] = useState({ x: 0, y: 0 })
+  const { t } = useTranslation()
+
+  const handleMouseMove1 = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    setMousePos1({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+  }
+
+  const handleMouseMove2 = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    setMousePos2({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+  }
+
   return (
-    <section className="bg-[#0d1e33] py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="bg-[#060357] py-24 md:py-32">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <motion.div
-          className="text-center mb-16"
+          className="mb-16 flex flex-col lg:flex-row justify-between items-end gap-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-white text-4xl md:text-5xl font-bold tracking-tight">
-            Lo que hacemos{' '}
-            <span className="relative inline-block">
-              <span className="relative z-10 italic text-white/60">(y lo que no)</span>
+          <div>
+            <span className="text-white/40 text-xs tracking-widest uppercase mb-6 block">
+              {t('approach.label')}
             </span>
-          </h2>
+            <h2 className="font-serif text-white text-4xl md:text-5xl lg:text-7xl tracking-tight leading-none">
+              {t('approach.title')}<span className="text-[#ff0000]">.</span>
+            </h2>
+          </div>
         </motion.div>
 
-        <motion.div
-          className="grid md:grid-cols-2 gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
-          {/* No somos */}
+        <div className="grid lg:grid-cols-2 gap-px bg-white/10 border border-white/10">
+          {/* No hacemos */}
           <motion.div
-            variants={staggerItem}
-            className="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            onMouseMove={handleMouseMove1}
+            className="bg-[#060357] p-10 md:p-16 relative overflow-hidden group"
           >
-            <h3 className="text-white/40 text-2xl font-bold mb-8">No hacemos</h3>
-            <ul className="space-y-5">
-              {[
-                'Demos bonitas que nunca llegan a producción',
-                'Implementar "lo que está de moda" sin validar el caso de uso',
-                'Proyectos de 18 meses para descubrir que no funcionaba',
-                'Vender horas de consultoría sin comprometernos con resultados',
-                'Decir que sí a todo para facturar'
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-4 text-white/50">
-                  <span className="text-red-400 mt-1 text-lg">✕</span>
-                  <span className="text-lg">{item}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Glare effect */}
+            <div 
+              className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+              style={{
+                background: `radial-gradient(600px circle at ${mousePos1.x}px ${mousePos1.y}px, rgba(255,255,255,0.08), transparent 80%)`
+              }}
+            />
+            
+            <div className="relative z-10">
+              <h3 className="text-white/30 font-serif text-2xl md:text-3xl mb-10 italic">{t('approach.dont_title')}</h3>
+              <ul className="space-y-8">
+                {[
+                  { title: t('approach.dont.item1_title'), desc: t('approach.dont.item1_desc') },
+                  { title: t('approach.dont.item2_title'), desc: t('approach.dont.item2_desc') },
+                  { title: t('approach.dont.item3_title'), desc: t('approach.dont.item3_desc') },
+                  { title: t('approach.dont.item4_title'), desc: t('approach.dont.item4_desc') }
+                ].map((item, index) => (
+                  <li key={index} className="space-y-1">
+                    <h4 className="text-white text-lg font-medium">{item.title}</h4>
+                    <p className="text-white/40 text-base leading-relaxed">{item.desc}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
 
-          {/* Somos */}
+          {/* Sí hacemos */}
           <motion.div
-            variants={staggerItem}
-            className="bg-[#2339E8]/10 border border-[#2339E8]/30 rounded-2xl p-8 md:p-10"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            onMouseMove={handleMouseMove2}
+            className="bg-[#0b077a] p-10 md:p-16 relative overflow-hidden group"
           >
-            <h3 className="text-white text-2xl font-bold mb-8">Sí hacemos</h3>
-            <ul className="space-y-5">
-              {[
-                'Diagnósticos honestos: "esto no tiene sentido" es una respuesta válida',
-                'Priorizar por impacto en negocio, no por sofisticación técnica',
-                'MVPs en semanas que validan hipótesis antes de escalar',
-                'Transferencia real de conocimiento a tu equipo',
-                'Decirte lo que no quieres oír si es lo que necesitas'
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-4 text-white/80">
-                  <span className="text-[#2339E8] mt-1 text-lg">✓</span>
-                  <span className="text-lg">{item}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Glare effect */}
+            <div 
+              className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+              style={{
+                background: `radial-gradient(600px circle at ${mousePos2.x}px ${mousePos2.y}px, rgba(255,255,255,0.1), transparent 80%)`
+              }}
+            />
+
+            <div className="relative z-10">
+              <h3 className="text-white font-serif text-2xl md:text-3xl mb-10 italic">{t('approach.do_title')}</h3>
+              <ul className="space-y-8">
+                {[
+                  { title: t('approach.do.item1_title'), desc: t('approach.do.item1_desc') },
+                  { title: t('approach.do.item2_title'), desc: t('approach.do.item2_desc') },
+                  { title: t('approach.do.item3_title'), desc: t('approach.do.item3_desc') },
+                  { title: t('approach.do.item4_title'), desc: t('approach.do.item4_desc') }
+                ].map((item, index) => (
+                  <li key={index} className="space-y-1">
+                    <h4 className="text-white text-lg font-medium">{item.title}</h4>
+                    <p className="text-white/70 text-base leading-relaxed">{item.desc}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
@@ -376,56 +1174,123 @@ function DifferentiationSection() {
 
 // Services Section
 function ServicesSection() {
+  const { t } = useTranslation()
+  
   const services = [
     {
-      number: '01',
-      title: 'Diagnóstico Estratégico',
-      description: 'No empezamos con tecnología. Empezamos entendiendo tu negocio, tus cuellos de botella y dónde una solución de IA tendría impacto real vs. dónde sería un capricho caro.',
-      outcome: 'Resultado: Mapa de oportunidades priorizado por ROI, no por hype.'
+      number: t('services_section.service1.number'),
+      slug: 'diagnostico',
+      title: t('services_section.service1.title'),
+      animation: analyticsAnim,
+      content: (
+        <div className="space-y-6">
+          <p className="text-[#060357]/80 font-medium">{t('services_section.service1.intro')}</p>
+          <ul className="space-y-2 text-[#060357]/60">
+            <li className="flex gap-2"><span>—</span> {t('services_section.service1.point1')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service1.point2')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service1.point3')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service1.point4')}</li>
+          </ul>
+          <p className="pt-4 text-[#060357] italic">{t('services_section.service1.result')}</p>
+        </div>
+      ),
     },
     {
-      number: '02',
-      title: 'Diseño de Solución',
-      description: 'Definimos el qué, el cómo y el cuánto. Sin ambigüedades. Con métricas de éxito claras y un plan B si la hipótesis falla. Porque a veces falla.',
-      outcome: 'Resultado: Roadmap ejecutable con hitos medibles.'
+      number: t('services_section.service2.number'),
+      slug: 'roadmap',
+      title: t('services_section.service2.title'),
+      animation: cloudAnim,
+      content: (
+        <div className="space-y-6">
+          <p className="text-[#060357]/80 font-medium">{t('services_section.service2.intro')}</p>
+          <ul className="space-y-2 text-[#060357]/60">
+            <li className="flex gap-2"><span>—</span> {t('services_section.service2.point1')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service2.point2')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service2.point3')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service2.point4')}</li>
+          </ul>
+          <p className="pt-4 text-[#060357] font-medium leading-tight">{t('services_section.service2.result')}</p>
+        </div>
+      ),
     },
     {
-      number: '03',
-      title: 'Ejecución y Validación',
-      description: 'Construimos MVPs que demuestran valor en semanas, no en trimestres. Si funciona, escalamos. Si no, pivotamos rápido y barato.',
-      outcome: 'Resultado: Prueba de concepto validada en entorno real.'
+      number: t('services_section.service3.number'),
+      slug: 'direccion',
+      title: t('services_section.service3.title'),
+      animation: dashboardAnim,
+      content: (
+        <div className="space-y-6">
+          <p className="text-[#060357]/70">{t('services_section.service3.intro')}</p>
+          <ul className="space-y-2 text-[#060357]/60">
+            <li className="flex gap-2"><span>—</span> {t('services_section.service3.point1')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service3.point2')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service3.point3')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service3.point4')}</li>
+            <li className="flex gap-2"><span>—</span> {t('services_section.service3.point5')}</li>
+          </ul>
+          <p className="pt-4 text-[#060357]/80">{t('services_section.service3.result')}</p>
+        </div>
+      ),
     },
     {
-      number: '04',
-      title: 'CTO Externo',
-      description: 'Liderazgo tecnológico de alto nivel sin el coste fijo de un C-level. Para cuando necesitas criterio senior pero no 250K€ de nómina.',
-      outcome: 'Resultado: Decisiones tecnológicas con visión de negocio.'
+      number: t('services_section.service4.number'),
+      slug: 'executive-cto',
+      title: t('services_section.service4.title'),
+      animation: financeAnim,
+      content: (
+        <div className="space-y-6">
+          <p className="text-[#060357] italic font-medium">{t('services_section.service4.intro')}</p>
+          <div className="space-y-2">
+            <p className="text-[10px] uppercase tracking-widest text-[#060357]/40 font-bold">{t('services_section.service4.designed_for')}</p>
+            <ul className="text-[#060357]/60">
+              <li>• {t('services_section.service4.target1')}</li>
+              <li>• {t('services_section.service4.target2')}</li>
+              <li>• {t('services_section.service4.target3')}</li>
+            </ul>
+          </div>
+          <div className="space-y-2">
+            <p className="text-[10px] uppercase tracking-widest text-[#060357]/40 font-bold">{t('services_section.service4.we_provide')}</p>
+            <ul className="space-y-1 text-[#060357]/60">
+              <li className="flex gap-2"><span>—</span> {t('services_section.service4.provide1')}</li>
+              <li className="flex gap-2"><span>—</span> {t('services_section.service4.provide2')}</li>
+              <li className="flex gap-2"><span>—</span> {t('services_section.service4.provide3')}</li>
+              <li className="flex gap-2"><span>—</span> {t('services_section.service4.provide4')}</li>
+              <li className="flex gap-2"><span>—</span> {t('services_section.service4.provide5')}</li>
+            </ul>
+          </div>
+          <p className="pt-4 text-[#060357] font-medium leading-tight">{t('services_section.service4.result')}</p>
+        </div>
+      ),
     }
   ]
 
   return (
-    <section className="bg-[#0a1628] py-24 md:py-32" id="servicios">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="bg-[#f5f3ef] py-24 md:py-32 border-y border-[#060357]/5 relative overflow-hidden" id="servicios">
+      <SubtleBlur />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         <motion.div
-          className="mb-16"
+          className="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-16 items-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <span className="text-[#2339E8] text-sm font-medium uppercase tracking-widest mb-6 block">
-            Servicios
-          </span>
-          <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-            Menos PowerPoint, más resultados
-          </h2>
-          <p className="text-white/50 text-xl max-w-2xl">
-            No vendemos "transformación digital". Resolvemos problemas concretos con soluciones que funcionan.
-          </p>
+          <div className="lg:col-span-3">
+            <span className="text-[#060357]/40 text-xs tracking-widest uppercase block">
+              {t('services_section.label')}
+            </span>
+          </div>
+          <div className="lg:col-span-9">
+            <h2 className="font-serif text-[#060357] text-3xl md:text-5xl lg:text-6xl tracking-tight leading-[1.2]">
+              {t('services_section.title1')}
+              <br />
+              <span className="italic font-medium text-[#060357]/80">{t('services_section.title2')}</span>
+            </h2>
+          </div>
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-6"
+          className="flex flex-col border-t border-[#060357]/10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -434,21 +1299,40 @@ function ServicesSection() {
           {services.map((service) => (
             <motion.div
               key={service.number}
-              variants={staggerItem}
-              className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#2339E8]/50 rounded-2xl p-8 md:p-10 transition-all duration-500"
+              variants={fadeInUp}
+              className="group border-b border-[#060357]/10 py-10 md:py-16 transition-all duration-500 relative"
             >
-              <span className="text-[#2339E8]/40 text-6xl font-bold group-hover:text-[#2339E8]/60 transition-colors">
-                {service.number}
-              </span>
-              <h3 className="text-white text-2xl font-bold mt-4 mb-4">
-                {service.title}
-              </h3>
-              <p className="text-white/60 text-lg mb-4">
-                {service.description}
-              </p>
-              <p className="text-[#2339E8] text-sm font-medium">
-                {service.outcome}
-              </p>
+              <Link to={`/servicios/${service.slug}`} className="absolute inset-0 z-20" />
+              <div className="grid lg:grid-cols-5 gap-12 lg:gap-20 items-start relative z-10">
+                {/* Left - Number & Animation Box (2/5) */}
+                <div className="lg:col-span-2 space-y-8">
+                  <div className="flex justify-between items-start">
+                    <span className="text-[#060357]/20 font-serif text-2xl md:text-3xl group-hover:text-[#060357] transition-colors duration-500 block">
+                      {service.number}
+                    </span>
+                    <span className="text-[#060357]/0 group-hover:text-[#060357]/40 transition-colors duration-500 font-serif italic text-sm">{t('services_section.viewDetail')}</span>
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="font-serif text-[#060357] text-xl md:text-5xl italic font-medium leading-tight">
+                    {service.title}
+                  </h3>
+
+                  {/* Animation Box */}
+                  <div className="w-full max-w-[320px] aspect-square flex items-center justify-center">
+                    <div className="w-full h-full opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+                      <Lottie animationData={service.animation} loop={true} />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Right - Content (3/5) */}
+                <div className="lg:col-span-3 lg:pt-24">
+                  <div className="text-base md:text-lg leading-relaxed text-[#060357]/70">
+                    {service.content}
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -457,48 +1341,122 @@ function ServicesSection() {
   )
 }
 
-// Manifesto Section
-function ManifestoSection() {
+// Benefits Section (Old Quote Section)
+function BenefitsSection() {
+  const { t } = useTranslation()
+  
+  const benefits = [
+    t('benefits.benefit1'),
+    t('benefits.benefit2'),
+    t('benefits.benefit3'),
+    t('benefits.benefit4'),
+    t('benefits.benefit5'),
+    t('benefits.benefit6')
+  ]
+
   return (
-    <section className="bg-[#2339E8] py-24 md:py-32">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
+    <section className="bg-[#060357] py-20 md:py-24 relative overflow-hidden text-white">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+      
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         <motion.div
+          className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
         >
+          <div className="lg:col-span-5">
+            <motion.span 
+              variants={fadeIn}
+              className="text-white/40 text-xs tracking-widest uppercase mb-6 block"
+            >
+              {t('benefits.label')}
+            </motion.span>
+            <motion.h2 
+              variants={fadeInUp}
+              className="font-serif text-3xl md:text-5xl lg:text-6xl leading-none tracking-tight italic font-medium"
+            >
+              {t('benefits.title1')}
+              <br />
+              {t('benefits.title2')}<span className="text-[#ff0000]">.</span>
+            </motion.h2>
+          </div>
+
+          <div className="lg:col-span-6 lg:col-start-7">
+            <ul className="space-y-4 md:space-y-6">
+              {benefits.map((benefit, idx) => (
+                <motion.li 
+                  key={idx}
+                  variants={fadeInUp}
+                  className="flex items-center gap-4 group"
+                >
+                  <span className="w-6 h-px bg-white/20 group-hover:w-10 group-hover:bg-[#ff0000] transition-all duration-500"></span>
+                  <p className="text-base md:text-lg lg:text-xl text-white/80 font-serif italic group-hover:text-white transition-colors duration-300">
+                    {benefit}
+                  </p>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// Tauler Group Section
+function TaulerGroupSection() {
+  const { t } = useTranslation()
+
+  return (
+    <section className="bg-white py-12 md:py-16 relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="flex flex-col items-center text-center"
+        >
           <motion.span 
-            variants={fadeInUp}
-            className="text-white/60 text-sm font-medium uppercase tracking-widest mb-8 block"
+            variants={fadeIn}
+            className="text-[#060357]/40 text-[10px] tracking-[0.3em] uppercase mb-6 block font-bold"
           >
-            Nuestra posición
+            {t('tauler_group.label')}
           </motion.span>
           
-          <motion.h2 
+          <motion.h3 
             variants={fadeInUp}
-            className="text-white text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-12 leading-tight"
+            className="font-serif text-2xl md:text-3xl text-[#060357] italic mb-10 leading-tight max-w-4xl"
           >
-            La IA no es magia. Es una herramienta. 
-            Y como toda herramienta, solo sirve si sabes para qué la usas.
-          </motion.h2>
+            {t('tauler_group.title')}
+          </motion.h3>
           
-          <motion.div variants={fadeInUp} className="space-y-6 text-white/80 text-lg md:text-xl text-left">
-            <p>
-              Llevamos años viendo empresas gastar fortunas en proyectos de IA que nunca 
-              debieron empezar. No porque la tecnología fallara, sino porque nadie hizo 
-              las preguntas incómodas al principio.
-            </p>
-            <p>
-              ¿Qué problema estamos resolviendo? ¿Cuánto vale resolverlo? ¿Es la IA 
-              la mejor forma de hacerlo? ¿Tenemos los datos? ¿Está la organización 
-              preparada para adoptar la solución?
-            </p>
-            <p className="text-white font-medium">
-              Nuestro trabajo es hacer esas preguntas. Y a veces, la respuesta honesta 
-              es: "No hagas nada. Todavía no."
-            </p>
+          <motion.div 
+            variants={fadeInUp}
+            className="mb-10"
+          >
+            <img 
+              src="/logo tauler.png" 
+              alt="Tauler Group" 
+              className="h-16 md:h-20 lg:h-24 w-auto opacity-100"
+            />
           </motion.div>
+          
+          <motion.a 
+            href="https://taulergroup.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            variants={fadeInUp}
+            className="group flex flex-col items-center gap-4"
+          >
+            <p className="text-[#060357] text-lg md:text-xl font-serif italic max-w-2xl mx-auto leading-relaxed group-hover:text-[#ff0000] transition-colors duration-500">
+              {t('tauler_group.description')}
+            </p>
+            <div className="w-12 h-px bg-[#060357]/20 group-hover:w-24 group-hover:bg-[#ff0000] transition-all duration-700"></div>
+          </motion.a>
         </motion.div>
       </div>
     </section>
@@ -508,6 +1466,7 @@ function ManifestoSection() {
 // Contact Section
 function ContactSection() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const { t } = useTranslation()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -535,96 +1494,122 @@ function ContactSection() {
   }
 
   return (
-    <section className="bg-[#0a1628] py-24 md:py-32" id="contacto">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <motion.div
-          className="grid lg:grid-cols-2 gap-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
+    <section className="bg-[#f5f3ef] py-24 md:py-32 relative overflow-hidden" id="contacto">
+      <SubtleBlur />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-20 items-start">
           {/* Left */}
-          <motion.div variants={fadeInUp}>
-            <span className="text-[#2339E8] text-sm font-medium uppercase tracking-widest mb-6 block">
-              Siguiente paso
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5"
+          >
+            <span className="text-[#060357]/40 text-xs tracking-widest uppercase mb-8 block">
+              {t('contact.label')}
             </span>
-            <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Una conversación honesta
+            <h2 className="font-serif text-[#060357] text-4xl md:text-5xl lg:text-6xl tracking-tight leading-none mb-10">
+              {t('contact.title1')}
+              <br />
+              <span className="italic font-medium text-[#060357]/80">{t('contact.title2')}</span>
             </h2>
-            <p className="text-white/60 text-lg mb-6">
-              No hacemos llamadas de venta. Hacemos conversaciones para entender 
-              si tiene sentido trabajar juntos. A veces la respuesta es no, 
-              y está bien.
-            </p>
-            <div className="space-y-4 text-white/40 text-sm">
-              <p>→ Sin compromiso. Sin presión.</p>
-              <p>→ 30 minutos para entender tu situación.</p>
-              <p>→ Feedback honesto, aunque no te guste.</p>
+            <div className="space-y-8 text-[#060357]/70 text-lg leading-relaxed mb-12">
+              <p>
+                {t('contact.intro')}
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <span className="w-6 h-px bg-[#060357]/20"></span>
+                  <p className="text-sm uppercase tracking-wider font-medium">{t('contact.feature1')}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="w-6 h-px bg-[#060357]/20"></span>
+                  <p className="text-sm uppercase tracking-wider font-medium">{t('contact.feature2')}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="w-6 h-px bg-[#060357]/20"></span>
+                  <p className="text-sm uppercase tracking-wider font-medium">{t('contact.feature3')}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="pt-10 border-t border-[#060357]/10">
+              <p className="text-[#060357]/40 text-sm mb-2 italic">{t('contact.email_intro')}</p>
+              <a href="mailto:info@taulergroup.com" className="text-2xl text-[#060357] font-serif italic hover:text-[#ff0000] transition-colors">
+                info@taulergroup.com
+              </a>
             </div>
           </motion.div>
 
           {/* Right - Form */}
-          <motion.div variants={fadeInUp}>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-6 lg:col-start-7 bg-white p-10 md:p-16 shadow-2xl shadow-black/[0.03]"
+          >
             {formStatus === 'success' ? (
-              <div className="bg-[#2339E8]/20 border border-[#2339E8]/40 rounded-2xl p-8 text-center">
-                <div className="text-4xl mb-4">✓</div>
-                <h3 className="text-white text-xl font-bold mb-2">Mensaje recibido</h3>
-                <p className="text-white/60">Te responderemos en menos de 48h. Sin bots, sin respuestas automáticas.</p>
+              <div className="py-20 text-center">
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="font-serif text-6xl mb-6 text-[#060357]"
+                >
+                  ✓
+                </motion.div>
+                <h3 className="font-serif text-[#060357] text-3xl mb-4 italic font-medium">{t('contact.form_success_title')}</h3>
+                <p className="text-[#060357]/60 text-lg">{t('contact.form_success_message')}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Tu nombre"
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-[#2339E8]/50 transition-colors"
-                  />
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-[0.2em] text-[#060357]/40 font-bold">{t('contact.form_name')}</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      className="w-full bg-transparent border-b border-[#060357]/10 px-0 py-2 text-[#060357] focus:outline-none focus:border-[#060357] transition-colors"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-[0.2em] text-[#060357]/40 font-bold">{t('contact.form_email')}</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      className="w-full bg-transparent border-b border-[#060357]/10 px-0 py-2 text-[#060357] focus:outline-none focus:border-[#060357] transition-colors"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email profesional"
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-[#2339E8]/50 transition-colors"
-                  />
-                </div>
-                <div>
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-[0.2em] text-[#060357]/40 font-bold">{t('contact.form_company')}</label>
                   <input
                     type="text"
                     name="company"
-                    placeholder="Empresa y cargo"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-[#2339E8]/50 transition-colors"
+                    className="w-full bg-transparent border-b border-[#060357]/10 px-0 py-2 text-[#060357] focus:outline-none focus:border-[#060357] transition-colors"
                   />
                 </div>
-                <div>
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-[0.2em] text-[#060357]/40 font-bold">{t('contact.form_message')}</label>
                   <textarea
                     name="message"
-                    placeholder="¿Cuál es el problema que intentas resolver? (sé específico)"
                     rows={4}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/40 focus:outline-none focus:border-[#2339E8]/50 transition-colors resize-none"
+                    className="w-full bg-transparent border-b border-[#060357]/10 px-0 py-2 text-[#060357] focus:outline-none focus:border-[#060357] transition-colors resize-none"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={formStatus === 'submitting'}
-                  className="w-full bg-[#2339E8] hover:bg-[#1a2bc0] text-white font-medium py-4 rounded-xl transition-colors disabled:opacity-50"
+                  className="w-full bg-[#060357] text-white py-6 text-xs tracking-[0.3em] uppercase hover:bg-[#0b077a] transition-all duration-300 disabled:opacity-50 mt-10 font-bold"
                 >
-                  {formStatus === 'submitting' ? 'Enviando...' : 'Enviar mensaje'}
+                  {formStatus === 'submitting' ? t('contact.form_submitting') : t('contact.form_submit')}
                 </button>
-                {formStatus === 'error' && (
-                  <p className="text-red-400 text-sm text-center">
-                    Error al enviar. Inténtalo de nuevo o escríbenos directamente.
-                  </p>
-                )}
               </form>
             )}
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
@@ -632,43 +1617,59 @@ function ContactSection() {
 
 // Footer
 function Footer() {
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+  const { t } = useTranslation()
+
   return (
-    <footer className="bg-[#060d18] py-16">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div>
-            <span className="text-white font-bold text-xl">tauler</span>
-            <p className="text-white/40 text-sm mt-2">
-              Consultoría estratégica en IA. Sin humo.
+    <footer className="bg-[#060357] pt-24 pb-12">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        <div className="grid md:grid-cols-12 gap-16 mb-24">
+          <div className="md:col-span-5">
+            <Link to="/">
+              <img 
+                src="/loto tauler white.png" 
+                alt="Tauler Group Logo" 
+                className="h-10 md:h-12 w-auto"
+              />
+            </Link>
+            <p className="text-white/40 text-lg mt-8 leading-relaxed max-w-sm italic">
+              {t('footer.tagline')}
             </p>
           </div>
 
-          <div className="flex items-center gap-8">
-            <a href="#problema" className="text-white/50 hover:text-white text-sm transition-colors">
-              El problema
-            </a>
-            <a href="#servicios" className="text-white/50 hover:text-white text-sm transition-colors">
-              Servicios
-            </a>
-            <a href="#contacto" className="text-white/50 hover:text-white text-sm transition-colors">
-              Contacto
-            </a>
+          <div className="md:col-span-2 md:col-start-8">
+            <h5 className="text-white/20 text-[10px] uppercase tracking-[0.2em] font-bold mb-8">{t('footer.navigation_label')}</h5>
+            <div className="flex flex-col gap-4">
+              <a href={isHome ? '#about' : '/#about'} className="text-white/60 hover:text-white transition-colors">{t('nav.about')}</a>
+              <a href={isHome ? '#servicios' : '/#servicios'} className="text-white/60 hover:text-white transition-colors">{t('nav.services')}</a>
+              <a href={isHome ? '#contacto' : '/#contacto'} className="text-white/60 hover:text-white transition-colors">{t('nav.contact')}</a>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/30 text-sm">
-            © {new Date().getFullYear()} Tauler Group
-          </p>
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex flex-wrap items-center justify-center gap-8">
+            <p className="text-white/20 text-xs tracking-widest uppercase">
+              {t('footer.copyright', { year: new Date().getFullYear() })}
+            </p>
+            <Link to="/legal/privacy" className="text-white/20 hover:text-white/40 text-xs tracking-widest uppercase transition-colors">
+              {t('footer.privacy')}
+            </Link>
+            <Link to="/legal/cookies" className="text-white/20 hover:text-white/40 text-xs tracking-widest uppercase transition-colors">
+              {t('footer.cookies')}
+            </Link>
+            <Link to="/legal/legal" className="text-white/20 hover:text-white/40 text-xs tracking-widest uppercase transition-colors">
+              {t('footer.legal')}
+            </Link>
+          </div>
+          
           <div className="flex items-center gap-6">
-            <a href="#" className="text-white/30 hover:text-white/50 text-sm transition-colors">
-              Privacidad
-            </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/tauler-group/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/30 hover:text-white/50 transition-colors"
+              className="text-white/40 hover:text-white transition-all duration-300 p-2 border border-white/10 rounded-full"
               aria-label="LinkedIn"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -682,17 +1683,35 @@ function Footer() {
   )
 }
 
+// Landing Page Component
+function LandingPage() {
+  return (
+    <main>
+      <HeroSection />
+      <AboutSection />
+      <ApproachSection />
+      <ServicesSection />
+      <BenefitsSection />
+      <TaulerGroupSection />
+      <ContactSection />
+    </main>
+  )
+}
+
 // Main App Component
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null)
 
   // Initialize Lenis smooth scroll
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     })
+
+    setLenisInstance(lenis)
 
     function raf(time: number) {
       lenis.raf(time)
@@ -715,22 +1734,21 @@ function App() {
   }, [isMenuOpen])
 
   return (
-    <>
-      <ScrollProgress />
-      <Navbar onMenuOpen={() => setIsMenuOpen(true)} />
-      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      
-      <main>
-        <HeroSection />
-        <ProblemSection />
-        <DifferentiationSection />
-        <ServicesSection />
-        <ManifestoSection />
-        <ContactSection />
-      </main>
-      
-      <Footer />
-    </>
+    <Router>
+      <LenisContext.Provider value={lenisInstance}>
+        <ScrollToTop />
+        <Navbar onMenuOpen={() => setIsMenuOpen(true)} />
+        <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/servicios/:id" element={<ServiceDetailPage />} />
+          <Route path="/legal/:id" element={<LegalPage />} />
+        </Routes>
+        
+        <Footer />
+      </LenisContext.Provider>
+    </Router>
   )
 }
 
