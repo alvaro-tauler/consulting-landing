@@ -120,13 +120,6 @@ function ServiceDetailPage() {
     'executive-cto': financeAnim
   }
 
-  const photoMap: Record<string, string> = {
-    'diagnostico': '/equipo multidisciplinar ok.webp',
-    'roadmap': '/metodo probado ok.webp',
-    'direccion': '/equipo page ok.webp',
-    'executive-cto': '/tecnologia propia ok.webp'
-  }
-
   if (!id || !animationMap[id]) return <div>{t('common.pageNotFound')}</div>
 
   const serviceKey = id === 'executive-cto' ? 'executive_cto' : id
