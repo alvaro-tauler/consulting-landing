@@ -1,4 +1,7 @@
 {
+  "logos": {
+    "visitWeb": "Visitar web →"
+  },
   "nav": {
     "about": "Sobre nosotros",
     "services": "Servicios",
@@ -9,59 +12,82 @@
   },
   "services_menu": {
     "diagnostico": "Diagnóstico estratégico",
-    "roadmap": "Roadmap Estratégico",
+    "roadmap": "Plan de acción de IA",
     "direccion": "Dirección de proyectos",
-    "executive_cto": "Executive CTO"
+    "executive_cto": "Strategic Technology Office"
   },
   "hero": {
     "title1": "IA y negocio,",
     "title2": "hablando el mismo idioma.",
+    "tagline": "Consultoría en IA • Estrategia empresarial • Resultados reales",
     "subtitle": "La boutique de consultoría en IA para las empresas del mañana.",
     "cta": "Hablemos"
   },
   "about": {
     "label": "Nuestra perspectiva",
-    "title1": "La mayoría de compañías no tienen un problema de tecnología.",
-    "title2": "Tienen un problema de criterio.",
-    "intro": "Saben que la Inteligencia Artificial puede transformar su negocio, pero no:",
-    "point1": "por dónde empezar,",
-    "point2": "qué merece la pena implementar,",
-    "point3": "qué es humo y qué es impacto real,",
-    "point4": "ni cómo tomar decisiones sin paralizar a la organización.",
+    "title1": "Para que la tecnología pueda marcar la diferencia,",
+    "title2": "hace falta criterio.",
+    "intro": "El problema de la empresa moderna no es la falta de acceso a tecnología, existen incontables proveedores; sin embargo, no abundan quienes poseen criterio de capital para desplegarla.",
+    "description_highlight": "En Tauler Group no \"hacemos IA\". Gobernamos su impacto en tu cuenta de resultados.",
+    "tagline": "La sutil tensión de la textura revela historias no contadas, invitándonos a sentir lo invisible.",
+    "point1": "",
+    "point2": "",
+    "point3": "",
+    "point4": "",
     "description1": "Nuestra consultoría no consiste en desarrollar software, consiste en diagnosticar y gobernar la transformación para que la IA tenga impacto real.",
-    "description2": "Trabajamos con CEOs y fundadores que buscan resultados tangibles, no experimentos eternos.",
+    "description2": "Somos una élite de arquitectos tecnológicos que trabajan codo a codo con CEOs y fundadores para lograr resultados tangibles.",
     "link": "Ver cómo trabajamos"
+  },
+  "stats": {
+    "headline1": "En un mundo impulsado por el ruido,",
+    "headline2": "elegimos la claridad.",
+    "headline3": "Nos enfocamos",
+    "headline4": "en el crecimiento a",
+    "headline5": "largo plazo.",
+    "stat1_desc": "Años de experiencia\nen tecnología y\ntransformación digital",
+    "stat2_desc": "Empresas impactadas\ncon estrategias de IA\ny transformación",
+    "card1_title": "Equipo Multidisciplinar",
+    "card1_desc": "Expertos en negocio, tecnología y estrategia trabajando en conjunto.",
+    "card2_title": "Método Probado",
+    "card2_desc": "Resultados tangibles y medibles en cada proyecto que ejecutamos.",
+    "card3_title": "Visión Holística",
+    "card3_desc": "Perspectiva 360° que integra estrategia, tecnología y operaciones."
   },
   "approach": {
     "label": "Nuestros principios",
     "title": "Honestidad radical",
+    "tagline": "Honestidad radical • Pragmatismo brutal • Resultados medibles",
+    "headline1": "Donde el equilibrio construye",
+    "headline2": "mejores resultados.",
+    "headline_desc": "Nos enfocamos en crear soluciones de IA que no solo se ven bien en papel, sino que mejoran tu cuenta de resultados.",
     "dont_title": "No hacemos",
-    "do_title": "Sí hacemos",
+    "do_title": "Sí garantizamos",
     "dont": {
-      "item1_title": "Desarrollos eternos",
-      "item1_desc": "No somos una agencia de desarrollo de software. Nosotros diagnosticamos, prototipamos y gobernamos la transformación para que la IA tenga impacto real.",
-      "item2_title": "Hype injustificado",
-      "item2_desc": "Si la IA no es la mejor solución para tu problema, te lo diremos.",
-      "item3_title": "Cajas negras",
-      "item3_desc": "No implementamos nada que no puedas entender, auditar y controlar.",
-      "item4_title": "Venta de horas",
-      "item4_desc": "Nos enfocamos en entregables y resultados, no en calentar la silla."
+      "item1_title": "\"Proyectos de Ciencia\"",
+      "item1_desc": "No hacemos I+D sin un Business Case validado. No experimentamos con su dinero.",
+      "item2_title": "Cajas Negras",
+      "item2_desc": "Si no podemos explicar cómo el algoritmo toma la decisión, no se implementa. La auditabilidad no es negociable.",
+      "item3_title": "Venta de Horas (Body Shopping)",
+      "item3_desc": "Nos oponemos al modelo de negocio arcaico del body shopping. Nuestros ingresos dependen exclusivamente de resolver problemas.",
+      "item4_title": "Hype Tecnológico",
+      "item4_desc": "Somos el filtro que separa la señal del ruido."
     },
     "do": {
-      "item1_title": "Impacto en la P&L",
-      "item1_desc": "Priorizamos proyectos por su capacidad de ahorro o generación de ingresos.",
-      "item2_title": "Pragmatismo técnico",
-      "item2_desc": "Usamos lo que funciona, sea el modelo más nuevo o una solución sencilla.",
-      "item3_title": "Transferencia de saber",
-      "item3_desc": "Capacitamos a tu equipo para que no dependas de nosotros para siempre.",
-      "item4_title": "Mentalidad de socio",
-      "item4_desc": "Nos involucramos en los objetivos de tu negocio como si fueran nuestros."
+      "item1_title": "Impacto Forense en P&L",
+      "item1_desc": "Cada euro invertido debe tener una trazabilidad clara hacia ahorro de costes o nuevos ingresos.",
+      "item2_title": "Gestión de Riesgos",
+      "item2_desc": "Tratamos la tecnología como un activo financiero. Evaluamos riesgo de ejecución, deuda técnica y coste de oportunidad.",
+      "item3_title": "Pragmatismo Brutal",
+      "item3_desc": "La solución más simple que funcione es la solución correcta.",
+      "item4_title": "Velocidad de Ejecución",
+      "item4_desc": "El mercado no espera. Nuestros sprints de diagnóstico y validación se miden en semanas, no en trimestres."
     }
   },
   "services_section": {
     "label": "Capacidades",
-    "title1": "Menos PowerPoint.",
-    "title2": "Más valor en producción.",
+    "title1": "Construido a través de ciclos.",
+    "title2": "No de momentos.",
+    "closing": "En un mundo ruidoso de señales efímeras, priorizamos la claridad.",
     "viewDetail": "Ver detalle →",
     "service1": {
       "number": "01",
@@ -75,18 +101,18 @@
     },
     "service2": {
       "number": "02",
-      "title": "Definición del Roadmap Estratégico de IA",
+      "title": "Plan de acción de IA",
       "intro": "Diseñamos un plan de adopción de IA alineado con:",
       "point1": "la estrategia empresarial,",
       "point2": "la estructura de costes,",
       "point3": "el nivel de madurez de la organización,",
       "point4": "y la capacidad real de ejecución.",
-      "result": "No es un roadmap tecnológico, es un roadmap de negocio apoyado en IA."
+      "result": "No es un plan tecnológico, es un plan de negocio apoyado en IA."
     },
     "service3": {
       "number": "03",
       "title": "Dirección de proyectos de transformación con IA",
-      "intro": "Lideramos proyectos apasionantes desde la definición hasta su ejecución.",
+      "intro": "Gobernanza ejecutiva del proyecto. Velamos de forma independiente por su éxito e impacto.",
       "point1": "Conceptualizamos la solución.",
       "point2": "Definimos arquitectura y enfoque.",
       "point3": "Gobernamos el proyecto.",
@@ -96,7 +122,7 @@
     },
     "service4": {
       "number": "04",
-      "title": "Executive CTO",
+      "title": "Strategic Technology Office",
       "intro": "El nuevo rol con más importancia en la empresa.",
       "designed_for": "Diseñado para:",
       "target1": "Consejos de administración",
@@ -131,7 +157,7 @@
     "label": "Hablemos",
     "title1": "Una charla,",
     "title2": "sin filtros.",
-    "intro": "Queremos entender si podemos ayudarte a ganar dinero o ahorrarlo.",
+    "intro": "Discutamos cómo podemos desplegar el máximo valor.",
     "feature1": "30 minutos de diagnóstico",
     "feature2": "Feedback directo y honesto",
     "feature3": "Hoja de ruta inicial gratuita",
@@ -185,11 +211,11 @@
       "conclusion": "Este diagnóstico no acelera decisiones. Evita decisiones equivocadas."
     },
     "roadmap": {
-      "title": "Roadmap Estratégico de Inteligencia Artificial",
+      "title": "Plan de Acción de IA",
       "subtitle": "Convertir criterio en dirección",
       "p1": "Una vez entendido dónde está el valor, el siguiente riesgo es intentar capturarlo todo de golpe.",
-      "p2": "El Roadmap Estratégico de IA es la evolución natural del diagnóstico: convierte el análisis en una secuencia ordenada de decisiones, alineada con la estrategia empresarial y la capacidad financiera de la compañía.",
-      "questions_title": "Este roadmap responde a cuestiones que rara vez se formulan bien:",
+      "p2": "El Plan de Acción de IA es la evolución natural del diagnóstico: convierte el análisis en una secuencia ordenada de decisiones, alineada con la estrategia empresarial y la capacidad financiera de la compañía.",
+      "questions_title": "Este plan de acción responde a cuestiones que rara vez se formulan bien:",
       "q1": "¿Qué iniciativas deben hacerse ahora y cuáles pueden esperar?",
       "q2": "¿Qué decisiones son reversibles y cuáles no?",
       "q3": "¿Donde conviene aprender barato antes de escalar?",
@@ -199,8 +225,8 @@
       "priority2": "Inversión requerida",
       "priority3": "Riesgo de ejecución",
       "priority4": "Dependencia organizativa",
-      "p3": "El roadmap no busca maximizar innovación, sino optimizar el retorno ajustado a riesgo. Introduce disciplina, foco y una lógica temporal que protege el largo plazo.",
-      "p4": "En términos de gobierno, el roadmap convierte la IA en algo gobernable, defendible ante consejo e inversores."
+      "p3": "El plan de acción no busca maximizar innovación, sino optimizar el retorno ajustado a riesgo. Introduce disciplina, foco y una lógica temporal que protege el largo plazo.",
+      "p4": "En términos de gobierno, el plan de acción convierte la IA en algo gobernable, defendible ante consejo e inversores."
     },
     "direccion": {
       "title": "Dirección de Proyectos de Transformación con IA",
@@ -222,10 +248,10 @@
       "conclusion": "Nuestro trabajo es mantener el proyecto dentro de los límites que lo hacen rentable, escalable y sostenible."
     },
     "executive_cto": {
-      "title": "Executive CTO",
+      "title": "Strategic Technology Office",
       "subtitle": "Gobernar la tecnología como un activo estratégico",
-      "p1": "En empresas de cierto tamaño, la tecnología deja de ser una función y pasa a ser un activo financiero. En ese punto, el rol de CTO ya no es solo técnico: es estratégico, financiero y organizativo.",
-      "p2": "El servicio de Executive CTO cubre ese rol a nivel de consejo cuando se necesita criterio independiente, se toman decisiones irreversibles, o la tecnología condiciona directamente la valoración de la compañía.",
+      "p1": "En empresas de cierto tamaño, la tecnología deja de ser una función y pasa a ser un activo financiero. En ese punto, el rol tecnológico ya no es solo técnico: es estratégico, financiero y organizativo.",
+      "p2": "El servicio de Strategic Technology Office cubre ese rol a nivel de consejo cuando se necesita criterio independiente, se toman decisiones irreversibles, o la tecnología condiciona directamente la valoración de la compañía.",
       "perspectives_title": "Este servicio integra cuatro perspectivas:",
       "perspective1_title": "Tecnología",
       "perspective1_desc": "Arquitectura, escalabilidad, dependencia y deuda real.",
@@ -240,12 +266,12 @@
       "participation2": "Auditoría tecnológica continua.",
       "participation3": "Soporte al CFO y al CEO en decisiones críticas.",
       "participation4": "Procesos de M&A, tanto de compra como de venta.",
-      "conclusion": "El Executive CTO no busca acelerar por acelerar. Busca preservar valor y evitar errores que no se pueden deshacer."
+      "conclusion": "El Strategic Technology Office no busca acelerar por acelerar. Busca preservar valor y evitar errores que no se pueden deshacer."
     }
   },
   "legal": {
     "back": "Volver",
-    "last_updated": "Última actualización",
+    "last_updated": "Última actualización: 15/09/2025",
     "privacy": {
       "title": "Política de Privacidad y Protección de Datos",
       "section1_title": "1. Responsable del Tratamiento",
@@ -305,16 +331,30 @@
       "section3_title": "Condiciones de Uso",
       "section3_content1": "El acceso a nuestra página web por parte del USUARIO es gratuito y está condicionado a la previa lectura y aceptación íntegra, expresa y sin reservas del presente Aviso Legal vigente en el momento del acceso, que rogamos lea detenidamente.",
       "section3_content2": "El USUARIO, en el momento que utiliza nuestro portal y sus contenidos o servicios, acepta y se somete expresamente a las Condiciones Generales de uso de este. Si el USUARIO no estuviere de acuerdo con las presentes Condiciones de uso, deberá abstenerse de utilizar este portal y operar por medio de este.",
+      "section3_content3": "En cualquier momento podremos modificar la presentación y configuración de nuestra Web, ampliar o reducir servicios, e incluso suprimirla de la Red, así como los servicios y contenidos prestados, todo ello de forma unilateral y sin previo aviso.",
       "section4_title": "Propiedad Intelectual",
       "section4_content1": "El sitio web, incluyendo a título enunciativo, pero no limitativo su programación, edición, compilación y demás elementos necesarios para su funcionamiento, los diseños, logotipos, texto y/o gráficos son propiedad del prestador o en su caso dispone de licencia o autorización expresa por parte de los autores. Todos los contenidos del sitio web se encuentran debidamente protegidos por la normativa de propiedad intelectual e industrial.",
       "section4_content2": "Independientemente de la finalidad para la que fueran destinados, la reproducción total o parcial, uso, explotación, distribución y comercialización, requiere en todo caso de la autorización escrita previa por parte del prestador. Cualquier uso no autorizado previamente por parte del prestador será considerado un incumplimiento grave de los derechos de propiedad intelectual o industrial del autor.",
+      "section4_content3": "Los diseños, logotipos, texto y/o gráficos ajenos al prestador y que pudieran aparecer en el sitio web, pertenecen a sus respectivos propietarios, siendo ellos mismos responsables de cualquier posible controversia que pudiera suscitarse respecto a los mismos. En todo caso, el prestador cuenta con la autorización expresa y previa por parte de estos.",
+      "section4_content4": "El prestador no permite, salvo autorización expresa, a terceros para que puedan redirigir directamente a los contenidos concretos del sitio web. En todo caso, y si mediare permiso, deberá redirigirla al sitio web principal del prestador.",
+      "section4_content5": "El prestador reconoce a favor de sus titulares los correspondientes derechos de propiedad industrial e intelectual, no implicando su sola mención o aparición en el sitio web la existencia de derechos o responsabilidad alguna del prestador sobre los mismos, como tampoco respaldo, patrocinio o recomendación por parte de este.",
+      "section4_content6": "Para realizar cualquier tipo de observación respecto a posibles incumplimientos de los derechos de propiedad intelectual o industrial, así como sobre cualquiera de los contenidos del sitio web, puede hacerlo a través del siguiente correo electrónico: info@taulergroup.com",
       "section5_title": "Condiciones Generales de Uso",
-      "section5_content1": "El acceso a nuestra página web es gratuito y no exige previa suscripción o registro. El USUARIO debe acceder a la misma conforme a la buena fe, las normas de orden público y a las presentes Condiciones Generales de uso.",
-      "section5_content2": "Teniendo en cuenta la imposibilidad de control respecto a la información, contenidos y servicios que contengan otras páginas web a los que se pueda acceder a través de los enlaces que nuestra página web pueda poner a su disposición, le comunicamos que quedamos eximidos de cualquier responsabilidad por los daños y perjuicios de toda clase que pudiesen derivar por la utilización de esas páginas web."
+      "section5_content1": "El acceso a nuestra página web es gratuito y no exige previa suscripción o registro. El USUARIO debe acceder a la misma conforme a la buena fe, las normas de orden público y a las presentes Condiciones Generales de uso. El acceso a nuestro sitio web se realiza bajo la propia y exclusiva responsabilidad del USUARIO, que se abstendrá de utilizar cualquiera de los servicios con fines o efectos ilícitos, prohibidos o lesivos para los derechos de terceras personas, respondiendo en todo caso de los daños y perjuicios que pueda causar a terceros o a nosotros mismos.",
+      "section5_content2": "Teniendo en cuenta la imposibilidad de control respecto a la información, contenidos y servicios que contengan otras páginas web a los que se pueda acceder a través de los enlaces que nuestra página web pueda poner a su disposición, le comunicamos que quedamos eximidos de cualquier responsabilidad por los daños y perjuicios de toda clase que pudiesen derivar por la utilización de esas páginas web, ajenas a nuestra empresa, por parte del USUARIO.",
+      "section5_content3": "Puede obtener más información sobre el uso que hacemos de sus datos de carácter personal en la Política de Privacidad de nuestra web."
     }
+  },
+  "cookie_banner": {
+    "message": "Utilizamos cookies para mejorar su experiencia en nuestro sitio web.",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "more_info": "Más información"
   },
   "common": {
     "pageNotFound": "Página no encontrada"
   }
 }
+
+
 

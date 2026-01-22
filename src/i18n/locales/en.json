@@ -1,4 +1,7 @@
 {
+  "logos": {
+    "visitWeb": "Visit website →"
+  },
   "nav": {
     "about": "About us",
     "services": "Services",
@@ -9,59 +12,82 @@
   },
   "services_menu": {
     "diagnostico": "Strategic diagnostic",
-    "roadmap": "Strategic Roadmap",
+    "roadmap": "AI Action Plan",
     "direccion": "Project management",
-    "executive_cto": "Executive CTO"
+    "executive_cto": "Strategic Technology Office"
   },
   "hero": {
     "title1": "AI and business,",
     "title2": "speaking the same language.",
+    "tagline": "AI Consulting • Business Strategy • Real Results",
     "subtitle": "The AI consulting boutique for tomorrow's companies.",
     "cta": "Let's talk"
   },
   "about": {
     "label": "Our perspective",
-    "title1": "Most companies don't have a technology problem.",
-    "title2": "They have a judgement problem.",
-    "intro": "They know that Artificial Intelligence can transform their business, but not:",
-    "point1": "where to start,",
-    "point2": "what's worth implementing,",
-    "point3": "what's hype and what's real impact,",
-    "point4": "nor how to make decisions without paralyzing the organization.",
+    "title1": "For technology to make a difference,",
+    "title2": "judgement is needed.",
+    "intro": "The problem of the modern company is not the lack of access to technology, there are countless providers; however, those who possess capital judgement to deploy it are not abundant.",
+    "description_highlight": "At Tauler Group we don't \"do AI\". We govern its impact on your bottom line.",
+    "tagline": "The subtle tension of texture reveals stories untold, inviting us to feel the unseen.",
+    "point1": "",
+    "point2": "",
+    "point3": "",
+    "point4": "",
     "description1": "Our consulting is not about developing software, it's about diagnosing and governing transformation so that AI has real impact.",
-    "description2": "We work with CEOs and founders who seek tangible results, not endless experiments.",
+    "description2": "We are an elite of technology architects working side by side with CEOs and founders to achieve tangible results.",
     "link": "See how we work"
+  },
+  "stats": {
+    "headline1": "In a world driven by noise,",
+    "headline2": "we choose clarity.",
+    "headline3": "We focus",
+    "headline4": "on long-term",
+    "headline5": "growth.",
+    "stat1_desc": "Years of experience\nin technology and\ndigital transformation",
+    "stat2_desc": "Companies impacted\nwith AI strategies\nand transformation",
+    "card1_title": "Multidisciplinary Team",
+    "card1_desc": "Experts in business, technology and strategy working together.",
+    "card2_title": "Proven Method",
+    "card2_desc": "Tangible and measurable results in every project we execute.",
+    "card3_title": "Holistic Vision",
+    "card3_desc": "360° perspective that integrates strategy, technology and operations."
   },
   "approach": {
     "label": "Our principles",
     "title": "Radical honesty",
+    "tagline": "Radical honesty • Brutal pragmatism • Measurable results",
+    "headline1": "Where balance builds",
+    "headline2": "better outcomes.",
+    "headline_desc": "We focus on creating AI solutions that don't just look good on paper—they improve your bottom line.",
     "dont_title": "We don't do",
-    "do_title": "We do",
+    "do_title": "We guarantee",
     "dont": {
-      "item1_title": "Endless developments",
-      "item1_desc": "We're not a software development agency. We diagnose, prototype, and govern transformation so that AI has real impact.",
-      "item2_title": "Unjustified hype",
-      "item2_desc": "If AI isn't the best solution for your problem, we'll tell you.",
-      "item3_title": "Black boxes",
-      "item3_desc": "We don't implement anything you can't understand, audit, and control.",
-      "item4_title": "Selling hours",
-      "item4_desc": "We focus on deliverables and results, not warming chairs."
+      "item1_title": "\"Science Projects\"",
+      "item1_desc": "We don't do R&D without a validated Business Case. We don't experiment with your money.",
+      "item2_title": "Black Boxes",
+      "item2_desc": "If we can't explain how the algorithm makes the decision, it won't be implemented. Auditability is non-negotiable.",
+      "item3_title": "Selling Hours (Body Shopping)",
+      "item3_desc": "We oppose the archaic body shopping business model. Our revenue depends solely on solving problems.",
+      "item4_title": "Tech Hype",
+      "item4_desc": "We are the filter that separates signal from noise."
     },
     "do": {
-      "item1_title": "P&L impact",
-      "item1_desc": "We prioritize projects by their ability to save or generate revenue.",
-      "item2_title": "Technical pragmatism",
-      "item2_desc": "We use what works, whether it's the newest model or a simple solution.",
-      "item3_title": "Knowledge transfer",
-      "item3_desc": "We train your team so you don't depend on us forever.",
-      "item4_title": "Partner mindset",
-      "item4_desc": "We engage with your business goals as if they were our own."
+      "item1_title": "Forensic P&L Impact",
+      "item1_desc": "Every euro invested must have clear traceability towards cost savings or new revenue.",
+      "item2_title": "Risk Management",
+      "item2_desc": "We treat technology as a financial asset. We evaluate execution risk, technical debt, and opportunity cost.",
+      "item3_title": "Brutal Pragmatism",
+      "item3_desc": "The simplest solution that works is the right solution.",
+      "item4_title": "Execution Speed",
+      "item4_desc": "The market doesn't wait. Our diagnostic and validation sprints are measured in weeks, not quarters."
     }
   },
   "services_section": {
     "label": "Capabilities",
-    "title1": "Less PowerPoint.",
-    "title2": "More value in production.",
+    "title1": "Built through cycles.",
+    "title2": "Not moments.",
+    "closing": "In a noisy world of fleeting signals, we prioritize clarity.",
     "viewDetail": "View detail →",
     "service1": {
       "number": "01",
@@ -75,18 +101,18 @@
     },
     "service2": {
       "number": "02",
-      "title": "AI Strategic Roadmap Definition",
+      "title": "AI Action Plan",
       "intro": "We design an AI adoption plan aligned with:",
       "point1": "business strategy,",
       "point2": "cost structure,",
       "point3": "organization maturity level,",
       "point4": "and actual execution capacity.",
-      "result": "It's not a technology roadmap, it's a business roadmap supported by AI."
+      "result": "It's not a technology plan, it's a business plan supported by AI."
     },
     "service3": {
       "number": "03",
       "title": "AI Transformation Project Management",
-      "intro": "We lead exciting projects from definition to execution.",
+      "intro": "Executive project governance. We independently ensure its success and impact.",
       "point1": "We conceptualize the solution.",
       "point2": "We define architecture and approach.",
       "point3": "We govern the project.",
@@ -96,7 +122,7 @@
     },
     "service4": {
       "number": "04",
-      "title": "Executive CTO",
+      "title": "Strategic Technology Office",
       "intro": "The new most important role in the company.",
       "designed_for": "Designed for:",
       "target1": "Boards of directors",
@@ -131,7 +157,7 @@
     "label": "Let's talk",
     "title1": "A conversation,",
     "title2": "no filters.",
-    "intro": "We want to understand if we can help you make money or save it.",
+    "intro": "Let's discuss how we can deploy maximum value.",
     "feature1": "30 minutes of diagnosis",
     "feature2": "Direct and honest feedback",
     "feature3": "Free initial roadmap",
@@ -185,11 +211,11 @@
       "conclusion": "This diagnostic doesn't accelerate decisions. It avoids wrong ones."
     },
     "roadmap": {
-      "title": "AI Strategic Roadmap",
+      "title": "AI Action Plan",
       "subtitle": "Turning judgement into direction",
       "p1": "Once you understand where the value is, the next risk is trying to capture it all at once.",
-      "p2": "The AI Strategic Roadmap is the natural evolution of the diagnostic: it converts the analysis into an ordered sequence of decisions, aligned with the business strategy and the company's financial capacity.",
-      "questions_title": "This roadmap answers questions that are rarely well formulated:",
+      "p2": "The AI Action Plan is the natural evolution of the diagnostic: it converts the analysis into an ordered sequence of decisions, aligned with the business strategy and the company's financial capacity.",
+      "questions_title": "This action plan answers questions that are rarely well formulated:",
       "q1": "Which initiatives should be done now and which can wait?",
       "q2": "Which decisions are reversible and which are not?",
       "q3": "Where is it better to learn cheaply before scaling?",
@@ -199,8 +225,8 @@
       "priority2": "Required investment",
       "priority3": "Execution risk",
       "priority4": "Organizational dependency",
-      "p3": "The roadmap doesn't seek to maximize innovation, but to optimize risk-adjusted return. It introduces discipline, focus, and temporal logic that protects the long term.",
-      "p4": "In governance terms, the roadmap makes AI something governable, defensible to the board and investors."
+      "p3": "The action plan doesn't seek to maximize innovation, but to optimize risk-adjusted return. It introduces discipline, focus, and temporal logic that protects the long term.",
+      "p4": "In governance terms, the action plan makes AI something governable, defensible to the board and investors."
     },
     "direccion": {
       "title": "AI Transformation Project Management",
@@ -222,10 +248,10 @@
       "conclusion": "Our job is to keep the project within the limits that make it profitable, scalable, and sustainable."
     },
     "executive_cto": {
-      "title": "Executive CTO",
+      "title": "Strategic Technology Office",
       "subtitle": "Governing technology as a strategic asset",
-      "p1": "In companies of a certain size, technology ceases to be a function and becomes a financial asset. At that point, the CTO role is no longer just technical: it's strategic, financial, and organizational.",
-      "p2": "The Executive CTO service covers that role at board level when independent judgement is needed, irreversible decisions are being made, or technology directly conditions the company's valuation.",
+      "p1": "In companies of a certain size, technology ceases to be a function and becomes a financial asset. At that point, the technology role is no longer just technical: it's strategic, financial, and organizational.",
+      "p2": "The Strategic Technology Office service covers that role at board level when independent judgement is needed, irreversible decisions are being made, or technology directly conditions the company's valuation.",
       "perspectives_title": "This service integrates four perspectives:",
       "perspective1_title": "Technology",
       "perspective1_desc": "Architecture, scalability, dependency, and real debt.",
@@ -240,12 +266,12 @@
       "participation2": "Continuous technology audit.",
       "participation3": "Support to CFO and CEO in critical decisions.",
       "participation4": "M&A processes, both buy and sell side.",
-      "conclusion": "The Executive CTO doesn't seek to accelerate for the sake of it. It seeks to preserve value and avoid mistakes that can't be undone."
+      "conclusion": "The Strategic Technology Office doesn't seek to accelerate for the sake of it. It seeks to preserve value and avoid mistakes that can't be undone."
     }
   },
   "legal": {
     "back": "Back",
-    "last_updated": "Last updated",
+    "last_updated": "Last updated: 15/09/2025",
     "privacy": {
       "title": "Privacy Policy and Data Protection",
       "section1_title": "1. Data Controller",
@@ -305,16 +331,30 @@
       "section3_title": "Terms of Use",
       "section3_content1": "Access to our website by the USER is free and is conditioned to the prior reading and full, express, and unreserved acceptance of this Legal Notice in force at the time of access, which we ask you to read carefully.",
       "section3_content2": "The USER, when using our portal and its contents or services, accepts and expressly submits to the General Conditions of use thereof. If the USER does not agree with these Terms of Use, they must refrain from using this portal and operating through it.",
+      "section3_content3": "At any time we may modify the presentation and configuration of our Website, expand or reduce services, and even remove it from the network, as well as the services and content provided, all unilaterally and without prior notice.",
       "section4_title": "Intellectual Property",
       "section4_content1": "The website, including but not limited to its programming, editing, compilation, and other elements necessary for its operation, designs, logos, text and/or graphics are the property of the provider or, where applicable, has a license or express authorization from the authors. All content on the website is duly protected by intellectual and industrial property regulations.",
       "section4_content2": "Regardless of the purpose for which they were intended, total or partial reproduction, use, exploitation, distribution, and commercialization, in any case requires prior written authorization from the provider. Any unauthorized use by the provider will be considered a serious breach of the author's intellectual or industrial property rights.",
+      "section4_content3": "The designs, logos, text and/or graphics not belonging to the provider that may appear on the website belong to their respective owners, who are themselves responsible for any possible controversy that may arise regarding them. In any case, the provider has express and prior authorization from them.",
+      "section4_content4": "The provider does not allow, except with express authorization, third parties to redirect directly to the specific contents of the website. In any case, and if permission is granted, it must redirect to the provider's main website.",
+      "section4_content5": "The provider recognizes the corresponding industrial and intellectual property rights in favor of their holders, their mere mention or appearance on the website not implying the existence of rights or any responsibility of the provider over them, nor endorsement, sponsorship, or recommendation by them.",
+      "section4_content6": "To make any type of observation regarding possible violations of intellectual or industrial property rights, as well as any of the contents of the website, you can do so through the following email: info@taulergroup.com",
       "section5_title": "General Terms of Use",
-      "section5_content1": "Access to our website is free and does not require prior subscription or registration. The USER must access it in accordance with good faith, public order rules, and these General Terms of Use.",
-      "section5_content2": "Taking into account the impossibility of control regarding the information, content, and services that other websites to which you may access through the links that our website may make available to you, we inform you that we are exempt from any liability for damages of any kind that may arise from the use of those websites."
+      "section5_content1": "Access to our website is free and does not require prior subscription or registration. The USER must access it in accordance with good faith, public order rules, and these General Terms of Use. Access to our website is made under the USER's own and exclusive responsibility, who will refrain from using any of the services for illicit purposes or effects, prohibited or harmful to the rights of third parties, being responsible in any case for the damages that may be caused to third parties or to ourselves.",
+      "section5_content2": "Taking into account the impossibility of control regarding the information, content, and services that other websites to which you may access through the links that our website may make available to you, we inform you that we are exempt from any liability for damages of any kind that may arise from the use of those websites, outside our company, by the USER.",
+      "section5_content3": "You can obtain more information about the use we make of your personal data in the Privacy Policy of our website."
     }
+  },
+  "cookie_banner": {
+    "message": "We use cookies to improve your experience on our website.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "more_info": "More information"
   },
   "common": {
     "pageNotFound": "Page not found"
   }
 }
+
+
 
