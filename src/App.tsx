@@ -2251,7 +2251,7 @@ function PEContactForm() {
         }
       ],
       context: {
-        pageUri: window.location.href,
+        pageUri: typeof window !== 'undefined' ? window.location.href : '',
         pageName: 'Private Equity - Contact'
       }
     }
@@ -2852,7 +2852,7 @@ function ContactSection() {
         }
       ],
       context: {
-        pageUri: window.location.href,
+        pageUri: typeof window !== 'undefined' ? window.location.href : '',
         pageName: 'Contact - Landing Page'
       }
     }
