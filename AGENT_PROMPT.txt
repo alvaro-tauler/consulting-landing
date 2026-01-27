@@ -1,0 +1,38 @@
+INVESTIGATE AND FIX CLOUDFLARE PAGES BUILD FAILURE
+
+PROBLEM:
+The build is failing on Cloudflare Pages but works perfectly locally. The application is a React + TypeScript + Vite SPA.
+
+PROJECT:
+- React 18.2.0 + TypeScript + Vite 5.0.0
+- Build command: `npm run build` (runs `tsc && vite build`)
+- Output: `dist/` directory
+- Deployment: Cloudflare Pages
+- Cloudflare Node.js: 22.16.0
+
+RECENT CHANGES:
+1. Removed unused WaterfallChart component (fixed TS6133 error)
+2. Protected window.location.href with typeof checks
+3. Added public/_redirects file for SPA routing
+
+LOCAL BUILD STATUS: ✅ Works perfectly - no errors
+
+TASKS:
+1. Check Cloudflare Pages build logs to identify the exact error
+2. Compare local vs Cloudflare build environment differences
+3. Verify public/_redirects file format is correct for Cloudflare Pages
+4. Check vite.config.ts, tsconfig.json, package.json for Cloudflare compatibility
+5. Verify wrangler.jsonc configuration
+6. Fix any identified issues
+7. Ensure SPA routing works (routes like /private-equity should not 404)
+
+FILES TO CHECK:
+- vite.config.ts
+- tsconfig.json
+- package.json
+- public/_redirects
+- wrangler.jsonc
+- src/App.tsx
+- Cloudflare Pages build settings
+
+EXPECTED: Build succeeds on Cloudflare Pages, all routes work correctly.
