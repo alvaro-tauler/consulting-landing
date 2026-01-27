@@ -3,155 +3,170 @@
     "visitWeb": "Visitar web →"
   },
   "nav": {
-    "about": "Sobre nosotros",
+    "about": "La Firma",
+    "team": "Equipo",
     "services": "Servicios",
+    "ma_practice": "PE Practice",
     "contact": "Contacto",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "letsTalk": "Hablemos"
+    "letsTalk": "Hablemos de tu P&L"
   },
   "services_menu": {
-    "diagnostico": "Diagnóstico estratégico",
-    "roadmap": "Plan de acción de IA",
-    "direccion": "Dirección de proyectos",
-    "executive_cto": "Strategic Technology Office"
+    "strategy": "STRATEGY (Arquitectura de Negocio)",
+    "build": "BUILD (Ejecución Integral)",
+    "govern": "GOVERN (Dirección Técnica)",
+    "ma": "M&A (Private Equity & Valoración)"
   },
   "hero": {
-    "title1": "IA y negocio,",
-    "title2": "hablando el mismo idioma.",
-    "tagline": "Consultoría en IA • Estrategia empresarial • Resultados reales",
-    "subtitle": "La boutique de consultoría en IA para las empresas del mañana.",
-    "cta": "Hablemos"
+    "title1": "Tu Socio de Operaciones Tecnológicas.",
+    "title2": "Del Excel al Código.",
+    "tagline": "Criterio Financiero • Ejecución Técnica • Responsabilidad Total",
+    "subtitle": "Somos el End-to-End Partner que alinea tu tecnología con tu tesis de negocio. Pensamos, dirigimos y construimos.",
+    "cta": "Auditar mi potencial"
   },
   "about": {
     "label": "Nuestra perspectiva",
-    "title1": "Para que la tecnología pueda marcar la diferencia,",
-    "title2": "hace falta criterio.",
-    "intro": "El problema de la empresa moderna no es la falta de acceso a tecnología, existen incontables proveedores; sin embargo, no abundan quienes poseen criterio de capital para desplegarla.",
-    "description_highlight": "En Tauler Group no \"hacemos IA\". Gobernamos su impacto en tu cuenta de resultados.",
-    "tagline": "La sutil tensión de la textura revela historias no contadas, invitándonos a sentir lo invisible.",
+    "title1": "La tecnología sin criterio es gasto.",
+    "title2": "Con criterio, es ventaja asimétrica.",
+    "intro": "",
+    "description_highlight": "En Tauler Group rompemos el conflicto de interés de los proveedores tecnológicos convencionales. No vendemos horas de ingeniería. Vendemos impacto auditado en tu cuenta de resultados.",
+    "tagline": "",
     "point1": "",
     "point2": "",
     "point3": "",
     "point4": "",
-    "description1": "Nuestra consultoría no consiste en desarrollar software, consiste en diagnosticar y gobernar la transformación para que la IA tenga impacto real.",
-    "description2": "Somos una élite de arquitectos tecnológicos que trabajan codo a codo con CEOs y fundadores para lograr resultados tangibles.",
-    "link": "Ver cómo trabajamos"
+    "description1": "Operamos como un Socio Operativo (Operating Partner). Tenemos la capacidad estratégica para definir el \"Qué\" (Negocio) y la potencia técnica para ejecutar el \"Cómo\" (Código).",
+    "description2": "Desde la auditoría hasta la puesta en producción. Nos hacemos responsables del ciclo completo del activo tecnológico.",
+    "link": "Nuestros Modelos de Colaboración →"
   },
   "stats": {
-    "headline1": "En un mundo impulsado por el ruido,",
-    "headline2": "elegimos la claridad.",
-    "headline3": "Nos enfocamos",
-    "headline4": "en el crecimiento a",
-    "headline5": "largo plazo.",
-    "stat1_desc": "Años de experiencia\nen tecnología y\ntransformación digital",
-    "stat2_desc": "Empresas impactadas\ncon estrategias de IA\ny transformación",
-    "card1_title": "Equipo Multidisciplinar",
-    "card1_desc": "Expertos en negocio, tecnología y estrategia trabajando en conjunto.",
-    "card2_title": "Método Probado",
-    "card2_desc": "Resultados tangibles y medibles en cada proyecto que ejecutamos.",
-    "card3_title": "Visión Holística",
-    "card3_desc": "Perspectiva 360° que integra estrategia, tecnología y operaciones."
+    "headline1": "Buscamos Retorno sobre el Capital.",
+    "headline3": "Impactamos en las 4 dimensiones",
+    "headline4": "del valor empresarial:",
+    "headline5": "",
+    "stat1_desc": "",
+    "stat2_desc": "",
+    "card1_title": "EBITDA Directo (Cash-in-Pocket)",
+    "card1_desc": "Transformamos OPEX ineficiente en margen neto mediante automatización y aumentamos ingresos mediante IA.",
+    "card2_title": "Valoración Patrimonial (Equity Value)",
+    "card2_desc": "Cada €1 ahorrado en costes operativos se multiplica por tu valoración de salida.",
+    "card3_title": "Escalabilidad (CAGR)",
+    "card3_desc": "Desvinculamos el crecimiento de tus ingresos del crecimiento de tus costes. Crecer más, gastando menos.",
+    "card4_title": "Expansión de Múltiplo",
+    "card4_desc": "Convertimos empresas manuales en empresas Tech-Enabled, aumentando el múltiplo que el mercado paga por ellas."
   },
   "approach": {
-    "label": "Nuestros principios",
-    "title": "Honestidad radical",
-    "tagline": "Honestidad radical • Pragmatismo brutal • Resultados medibles",
-    "headline1": "Donde el equilibrio construye",
-    "headline2": "mejores resultados.",
-    "headline_desc": "Nos enfocamos en crear soluciones de IA que no solo se ven bien en papel, sino que mejoran tu cuenta de resultados.",
-    "dont_title": "No hacemos",
-    "do_title": "Sí garantizamos",
-    "dont": {
-      "item1_title": "\"Proyectos de Ciencia\"",
-      "item1_desc": "No hacemos I+D sin un Business Case validado. No experimentamos con su dinero.",
-      "item2_title": "Cajas Negras",
-      "item2_desc": "Si no podemos explicar cómo el algoritmo toma la decisión, no se implementa. La auditabilidad no es negociable.",
-      "item3_title": "Venta de Horas (Body Shopping)",
-      "item3_desc": "Nos oponemos al modelo de negocio arcaico del body shopping. Nuestros ingresos dependen exclusivamente de resolver problemas.",
-      "item4_title": "Hype Tecnológico",
-      "item4_desc": "Somos el filtro que separa la señal del ruido."
-    },
-    "do": {
-      "item1_title": "Impacto Forense en P&L",
-      "item1_desc": "Cada euro invertido debe tener una trazabilidad clara hacia ahorro de costes o nuevos ingresos.",
-      "item2_title": "Gestión de Riesgos",
-      "item2_desc": "Tratamos la tecnología como un activo financiero. Evaluamos riesgo de ejecución, deuda técnica y coste de oportunidad.",
-      "item3_title": "Pragmatismo Brutal",
-      "item3_desc": "La solución más simple que funcione es la solución correcta.",
-      "item4_title": "Velocidad de Ejecución",
-      "item4_desc": "El mercado no espera. Nuestros sprints de diagnóstico y validación se miden en semanas, no en trimestres."
-    }
+    "label": "El Estándar Tauler",
+    "title": "No somos una fábrica de software. Somos Auditores de Eficiencia.",
+    "description": "En un mercado saturado de promesas vacías y \"Hype\" de Inteligencia Artificial, nosotros elegimos la claridad matemática. No vendemos lo que está de moda, implementamos lo que funciona en la cuenta de resultados.",
+    "separator_title": "LO QUE NOS SEPARA DEL RESTO:",
+    "point1_title": "Del Powerpoint a la Producción",
+    "point1_desc": "Los consultores estratégicos no saben programar. Los desarrolladores no saben de finanzas. Nosotros somos el híbrido que cierra esa brecha. Diseñamos la estrategia y tenemos la capacidad técnica para construirla. Sin intermediarios.",
+    "point2_title": "El Valor del \"NO\" (Criterio Fiduciario)",
+    "point2_desc": "Nuestro mayor activo no es lo que construimos, sino lo que evitamos que construyas. Si una iniciativa tecnológica no tiene un retorno financiero claro, la detenemos antes de gastar un euro. Protegemos tu capital con la misma diligencia con la que protegeríamos el nuestro.",
+    "point3_title": "Velocidad de Start-up, Rigor de Corporate",
+    "point3_desc": "Combinamos la agilidad de ejecución de una tecnológica con el rigor de gestión de riesgos de una gran corporación. Sprints cortos, entregables tangibles y control financiero estricto."
   },
   "services_section": {
-    "label": "Capacidades",
-    "title1": "Construido a través de ciclos.",
-    "title2": "No de momentos.",
-    "closing": "En un mundo ruidoso de señales efímeras, priorizamos la claridad.",
+    "label": "End-to-End Partner",
+    "title1": "Tú decides el nivel de intervención.",
+    "title2": "Nosotros ponemos el estándar.",
+    "closing": "Adaptamos nuestro rol a tu necesidad: Pensar, Construir o Dirigir.",
     "viewDetail": "Ver detalle →",
+    "result_label": "Resultado",
     "service1": {
       "number": "01",
-      "title": "Diagnóstico estratégico de IA",
-      "intro": "Identificamos con precisión:",
-      "point1": "qué procesos merece la pena automatizar,",
-      "point2": "dónde la IA puede mejorar eficiencia o reducir costes,",
-      "point3": "qué casos de uso tienen impacto directo en la P&L,",
-      "point4": "y qué iniciativas no deberían ni empezarse.",
-      "result": "Resultado: claridad, foco y prioridades reales."
+      "title": "STRATEGY (Arquitectura de Negocio)",
+      "role": "Nosotros Pensamos.",
+      "intro": "Ideal cuando tienes capital pero no sabes dónde invertirlo para obtener el máximo retorno.",
+      "point1": "Auditoría de Capital Tecnológico.",
+      "point2": "Diagnóstico de Operaciones y P&L.",
+      "point3": "Business Case y Hoja de Ruta de Inversión.",
+      "point4": "",
+      "result": "Un Plan Maestro financiero, no un documento técnico."
     },
     "service2": {
       "number": "02",
-      "title": "Plan de acción de IA",
-      "intro": "Diseñamos un plan de adopción de IA alineado con:",
-      "point1": "la estrategia empresarial,",
-      "point2": "la estructura de costes,",
-      "point3": "el nivel de madurez de la organización,",
-      "point4": "y la capacidad real de ejecución.",
-      "result": "No es un plan tecnológico, es un plan de negocio apoyado en IA."
+      "title": "BUILD (Ejecución Integral)",
+      "role": "Nosotros Hacemos.",
+      "intro": "Ideal cuando sabes qué necesitas y quieres una solución llave en mano, sin gestionar equipos complejos.",
+      "point1": "Desarrollo de Soluciones de IA y Automatización.",
+      "point2": "Implementación Técnica End-to-End.",
+      "point3": "Puesta en Marcha y Formación.",
+      "point4": "",
+      "result": "Activos tecnológicos en producción que generan caja desde el día 1."
     },
     "service3": {
       "number": "03",
-      "title": "Dirección de proyectos de transformación con IA",
-      "intro": "Gobernanza ejecutiva del proyecto. Velamos de forma independiente por su éxito e impacto.",
-      "point1": "Conceptualizamos la solución.",
-      "point2": "Definimos arquitectura y enfoque.",
-      "point3": "Gobernamos el proyecto.",
-      "point4": "Recomendamos equipos internos o externos.",
-      "point5": "Actuamos como punto de control independiente.",
-      "result": "La empresa ejecuta. Nosotros garantizamos criterio, foco y coherencia."
+      "title": "GOVERN (Dirección Técnica / F-CTO)",
+      "role": "Nosotros Asesoramos.",
+      "intro": "Ideal cuando tienes proveedores o equipo interno, pero necesitas seguimiento externo, criterio independiente y asesoramiento estratégico.",
+      "point1": "Seguimiento y Auditoría Externa de Proyectos.",
+      "point2": "Asesoramiento Técnico Independiente.",
+      "point3": "Control Presupuestario y Evaluación de Calidad de Proveedores.",
+      "point4": "",
+      "result": "Criterio independiente para validar entregas y proteger tu inversión."
     },
     "service4": {
       "number": "04",
-      "title": "Strategic Technology Office",
-      "intro": "El nuevo rol con más importancia en la empresa.",
-      "designed_for": "Diseñado para:",
-      "target1": "Consejos de administración",
-      "target2": "Fondos de inversión",
-      "target3": "Compañías con facturación relevante y procesos complejos",
-      "we_provide": "Aportamos:",
-      "provide1": "Criterio tecnológico alineado con finanzas y estrategia",
-      "provide2": "Asesoramiento al board",
-      "provide3": "Auditoría tecnológica continua",
-      "provide4": "Soporte en procesos de M&A",
-      "provide5": "Labor didáctica para ejecutivos de alto nivel",
-      "result": "No tomamos decisiones técnicas aisladas. Tomamos decisiones que afectan a valor, riesgo y crecimiento."
+      "title": "PE PRACTICE",
+      "role": "Investment Thesis Assurance.",
+      "intro": "El servicio especializado para Fondos y Transacciones Corporativas.",
+      "point1": "Pre-Deal: Due Diligence Tecnológica.",
+      "point2": "Post-Deal: Plan de Choque de Creación de Valor (Tech-Capital Value Creation).",
+      "point3": "Exit-Readiness: Preparación de la compañía para defender una valoración Tech-Enabled.",
+      "point4": "",
+      "result": "Expansión del Múltiplo de Valoración y mitigación de riesgo en la transacción.",
+      "viewDetail": "Ver Tesis de Inversión →"
     }
   },
   "benefits": {
-    "label": "Valor",
+    "label": "Impacto",
     "title1": "Qué obtiene",
     "title2": "el cliente",
-    "benefit1": "Decisiones mejor informadas.",
-    "benefit2": "Menos riesgo tecnológico.",
-    "benefit3": "Proyectos de IA con impacto real.",
-    "benefit4": "Ahorro de tiempo y foco directivo.",
-    "benefit5": "Tranquilidad en momentos críticos.",
-    "benefit6": "IA de impacto para las compañías del mañana."
+    "benefit1": "Criterio de Capital: Dejas de gastar en tecnología, empiezas a invertir en activos.",
+    "benefit2": "Velocidad Operativa: Reducción drástica del Time-to-Market.",
+    "benefit3": "Riesgo Controlado: Eliminación de la incertidumbre en proyectos complejos.",
+    "benefit4": "Aumento de Valoración: Impacto directo en el Enterprise Value de la compañía.",
+    "benefit5": "Paz Mental: Saber que un socio experto se hace responsable del resultado final.",
+    "benefit6": "ROI Medible: Cada inversión tecnológica tiene trazabilidad clara hacia resultados financieros."
   },
   "tauler_group": {
     "label": "Excelencia",
-    "title": "Con la excelencia de Tauler Group",
-    "description": "Accede a la página de Tauler Group para conocer más acerca de nuestro equipo y el grupo."
+    "title": "Tauler Group. The Strategic Technology Office.",
+    "description": "No somos proveedores. Somos tus socios en la asignación de capital tecnológico. Agenda una sesión de diagnóstico inicial para evaluar tu potencial de eficiencia.",
+    "cta": "Solicitar Auditoría"
+  },
+  "team": {
+    "eyebrow": "NUESTRO EQUIPO",
+    "headline1": "ESTRATEGAS EXPERIMENTADOS",
+    "headline2": "Y TECNÓLOGOS EXPERTOS",
+    "description": "En Tauler Group, combinamos estrategia, IA, finanzas y negocio, para elevar los negocios del mañana.",
+    "alvaro": {
+      "name": "Álvaro Toledo",
+      "title": "Co-Founder & Co-CEO",
+      "qualification1_title": "Ingeniero en Ciencia de Datos e Inteligencia Artificial",
+      "qualification1_desc": "Universidad Politécnica de Madrid.",
+      "qualification2_title": "Desarrollo y Escalado",
+      "qualification2_desc": "Maneja equipos de desarrollo y operaciones de proyectos de IA.",
+      "qualification3_title": "Tauler Group",
+      "qualification3_desc": "Lidera la visión de producto y la ejecución técnica.",
+      "description1": "Álvaro dirige la estrategia tecnológica y de operaciones en Tauler Group. Su enfoque se centra en la integración de sistemas de IA escalables que impactan directamente en la eficiencia operativa.",
+      "description2": "Combina la ingeniería de IA con una visión clara de producto y mercado, asegurando que la tecnología resuelva problemas reales de negocio."
+    },
+    "manuel": {
+      "name": "Manuel Toledo",
+      "title": "Co-Founder & Co-CEO",
+      "qualification1_title": "Matemático",
+      "qualification1_desc": "Universidad Complutense de Madrid y Universidad de La Laguna.",
+      "qualification2_title": "Operaciones y Finanzas",
+      "qualification2_desc": "Gestión de recursos y optimización de procesos operativos.",
+      "qualification3_title": "Business Development",
+      "qualification3_desc": "Liderazgo en la apertura de nuevos mercados y relaciones con clientes clave.",
+      "description1": "Manuel aporta la visión estratégica y financiera a Tauler Group. Su experiencia permite traducir las capacidades técnicas de la IA en planes de negocio sólidos y sostenibles.",
+      "description2": "Se encarga de asegurar que cada proyecto no solo sea técnicamente viable, sino que genere un retorno de inversión claro y medible para nuestros clientes."
+    }
   },
   "contact": {
     "label": "Hablemos",
@@ -353,6 +368,129 @@
   },
   "common": {
     "pageNotFound": "Página no encontrada"
+  },
+  "pe": {
+    "teaser": {
+      "eyebrow": "Área de Práctica",
+      "headline": "PE Practice",
+      "headline_accent": "Practice.",
+      "subheadline": "Operamos la tecnología como una firma de capital: Optimizamos el EBITDA mediante eficiencia algorítmica. Nuestro éxito depende del retorno de la transformación tecnológica.",
+      "hook_label": "Insight Clave",
+      "hook": "\"La tecnología es el mayor destructor de valor en una transacción si se ignora—y el mayor multiplicador si se gobierna.\"",
+      "cta": "Explorar Soluciones PE"
+    },
+    "hero": {
+      "eyebrow": "Práctica de Private Equity",
+      "headline": "Tech-Capital Value Creation.",
+      "headline_accent": "Transformamos la tecnología en Equity Value.",
+      "subheadline": "Actuamos como Operating Partners tecnológicos para Fondos de Private Equity y compañías en proceso de transacción. Mitigamos el riesgo en la entrada. Maximizamos el múltiplo en la salida.",
+      "cta_primary": "Analizar Tesis de Inversión",
+      "cta_secondary": "Explorar Escenarios"
+    },
+    "problem": {
+      "eyebrow": "La Tesis",
+      "headline": "La tecnología es el mayor destructor de valor si se ignora, y el mayor multiplicador si se gobierna.",
+      "intro": "En el contexto de una transacción, la tecnología suele tratarse como una \"caja negra\" o un centro de costes (IT). Es un error de cálculo. Hoy, la eficiencia operativa y la escalabilidad tecnológica son los principales determinantes de la calidad del EBITDA y, por tanto, de la valoración final de un activo.",
+      "intro2": "Tauler Group no opera como un proveedor de servicios. Operamos como un Gestor de Activos Tecnológicos. Nuestra función es asegurar que cada euro de CAPEX digital tenga un retorno directo en la cuenta de resultados y en la valoración de salida.",
+      "conflict_title": "",
+      "vendor_title": "",
+      "vendor_desc": "",
+      "fund_title": "",
+      "fund_desc": "",
+      "result_title": "",
+      "result_desc": "",
+      "stat": ""
+    },
+    "solution": {
+      "eyebrow": "El Racional Financiero",
+      "headline": "Impacto Cuadrático en el Retorno.",
+      "headline_accent": "Nuestra intervención actúa simultáneamente sobre cuatro dimensiones del valor:",
+      "description": "",
+      "levers": {
+        "title": "Las 4 Palancas",
+        "lever1_title": "01. Generación de Caja (EBITDA Uplift)",
+        "lever1_desc": "Transformación de OPEX ineficiente en margen operativo mediante automatización de procesos y optimización de recursos. Cada unidad de coste operativo eliminada impacta directamente en el flujo de caja disponible.",
+        "lever2_title": "02. Valoración Patrimonial (Equity Value)",
+        "lever2_desc": "Efecto multiplicador: los ahorros operativos recurrentes se capitalizan al múltiplo de salida. La mejora en EBITDA se traduce en valoración patrimonial mediante el múltiplo de mercado aplicable.",
+        "lever3_title": "03. Apalancamiento Operativo (Scalability)",
+        "lever3_desc": "Desacoplamiento estructural entre crecimiento de ingresos y crecimiento de costes. La arquitectura tecnológica permite escalar operaciones sin incremento proporcional de la base de costes fijos.",
+        "lever4_title": "04. Expansión de Múltiplo (Risk Reduction)",
+        "lever4_desc": "Transformación del perfil de riesgo mediante la transición de modelos operativos intensivos en mano de obra hacia modelos Tech-Enabled. La reducción de riesgo operativo y dependencia humana permite defender múltiplos de valoración superiores en procesos de salida."
+      },
+      "tags": []
+    },
+    "scenarios": {
+      "eyebrow": "Ciclo de Vida de la Inversión",
+      "headline": "Intervención End-to-End.",
+      "subheadline": "Cubrimos el ciclo completo del activo, desde la detección de riesgos hasta la preparación para la venta.",
+      "pre": {
+        "type": "I. PRE-DEAL / PRE-MANDATO",
+        "title": "Tech Due Diligence Forense",
+        "subtitle": "Buy-Side: Antes de firmar, auditamos la realidad bajo el capó.",
+        "description": "",
+        "items": [
+          "Identificación de Deuda Técnica Oculta: ¿Cuánto CAPEX \"sorpresa\" requerirá el activo?",
+          "Evaluación de Escalabilidad: ¿Aguantará la tecnología el plan de crecimiento del Fondo?",
+          "Red Flag Report: Riesgos críticos de seguridad, propiedad intelectual y dependencia de proveedores."
+        ]
+      },
+      "post": {
+        "type": "II. HOLDING PERIOD / VALUE CREATION",
+        "title": "Plan de Choque de Eficiencia",
+        "subtitle": "Buy-Side: Ejecución del plan de creación de valor para mejorar el flujo de caja operativo.",
+        "description": "",
+        "items": [
+          "Automatización de Back-Office: Reducción de carga administrativa en Finanzas y Operaciones.",
+          "Generación de Ingresos: Pricing dinámico basado en IA, sistemas de generación de leads automatizados, optimización de conversión y aumento de ticket medio."
+        ]
+      },
+      "exit": {
+        "type": "III. EXIT READINESS / SELL-SIDE",
+        "title": "Defensa de Valoración",
+        "subtitle": "Sell-Side: Preparamos la compañía para resistir el escrutinio del comprador.",
+        "description": "",
+        "items": [
+          "Saneamiento de arquitectura y procesos.",
+          "Documentación de escalabilidad.",
+          "Narrativa de activo tecnológico para defender el precio de venta."
+        ]
+      }
+    },
+    "waterfall": {
+      "eyebrow": "Modelo de Creación de Valor",
+      "headline": "La Cascada Financiera",
+      "description": "Tratamos la tecnología como una palanca financiera, no como un gasto de IT.",
+      "caption": "Modelo ilustrativo basado en resultados típicos de engagement. Los resultados reales varían por empresa.",
+      "bars": {
+        "current": "EBITDA Actual",
+        "automation": "+ Ahorros por Automatización",
+        "ai": "+ Incremento de Ingresos por IA",
+        "fees": "- Honorarios Tauler",
+        "adjusted": "EBITDA Ajustado"
+      }
+    },
+    "offer": {
+      "badge": "Modelo de Alineación",
+      "headline": "Incentivos Alineados (Risk Sharing).",
+      "description": "Entendemos la matemática del retorno. No queremos ser un coste fijo (OPEX) más en su P&L; queremos ser socios en la creación de valor.",
+      "pricing_intro": "",
+      "audit_fee": "Audit Fee (Coste): Un honorario fijo acotado para cubrir los costes operativos del diagnóstico o intervención inicial.",
+      "success_fee": "Success Fee (Inversión): Un componente variable vinculado directamente al EBITDA recurrente desbloqueado o al éxito de la transacción.",
+      "guarantee": "Si no mejoramos el margen operativo, nuestro coste es marginal. Si lo mejoramos, compartimos una fracción del valor patrimonial creado.",
+      "pricing": {
+        "diagnosis": { "label": "Diagnóstico", "value": "Tarifa Fija" },
+        "implementation": { "label": "Implementación", "value": "Basado en Éxito" },
+        "ongoing": { "label": "Continuo", "value": "Vinculado a Valor" }
+      }
+    },
+    "contact": {
+      "headline": "Hablemos sobre su próxima transacción",
+      "headline_accent": "o sobre cómo desbloquear valor en su portfolio actual.",
+      "description": "",
+      "cta": "Contactar con PE Practice",
+      "email_label": "O contáctanos directamente:",
+      "calendly_placeholder": "Integración Calendly"
+    }
   }
 }
 

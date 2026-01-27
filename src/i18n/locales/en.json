@@ -3,155 +3,170 @@
     "visitWeb": "Visit website →"
   },
   "nav": {
-    "about": "About us",
+    "about": "The Firm",
+    "team": "Team",
     "services": "Services",
+    "ma_practice": "PE Practice",
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "letsTalk": "Let's talk"
+    "letsTalk": "Let's talk about your P&L"
   },
   "services_menu": {
-    "diagnostico": "Strategic diagnostic",
-    "roadmap": "AI Action Plan",
-    "direccion": "Project management",
-    "executive_cto": "Strategic Technology Office"
+    "strategy": "STRATEGY (Business Architecture)",
+    "build": "BUILD (Full Execution)",
+    "govern": "GOVERN (Technical Direction)",
+    "ma": "M&A (Private Equity & Valuation)"
   },
   "hero": {
-    "title1": "AI and business,",
-    "title2": "speaking the same language.",
-    "tagline": "AI Consulting • Business Strategy • Real Results",
-    "subtitle": "The AI consulting boutique for tomorrow's companies.",
-    "cta": "Let's talk"
+    "title1": "Your Technology Operations Partner.",
+    "title2": "From Excel to Code.",
+    "tagline": "Financial Judgement • Technical Execution • Full Accountability",
+    "subtitle": "We're the End-to-End Partner that aligns your technology with your business thesis. We think, direct, and build.",
+    "cta": "Audit my potential"
   },
   "about": {
     "label": "Our perspective",
-    "title1": "For technology to make a difference,",
-    "title2": "judgement is needed.",
-    "intro": "The problem of the modern company is not the lack of access to technology, there are countless providers; however, those who possess capital judgement to deploy it are not abundant.",
-    "description_highlight": "At Tauler Group we don't \"do AI\". We govern its impact on your bottom line.",
-    "tagline": "The subtle tension of texture reveals stories untold, inviting us to feel the unseen.",
+    "title1": "Technology without judgement is expense.",
+    "title2": "With judgement, it's asymmetric advantage.",
+    "intro": "",
+    "description_highlight": "At Tauler Group we break the conflict of interest of conventional technology providers. We don't sell engineering hours. We sell audited impact on your bottom line.",
+    "tagline": "",
     "point1": "",
     "point2": "",
     "point3": "",
     "point4": "",
-    "description1": "Our consulting is not about developing software, it's about diagnosing and governing transformation so that AI has real impact.",
-    "description2": "We are an elite of technology architects working side by side with CEOs and founders to achieve tangible results.",
-    "link": "See how we work"
+    "description1": "We operate as an Operating Partner. We have the strategic capacity to define the \"What\" (Business) and the technical power to execute the \"How\" (Code).",
+    "description2": "From audit to production deployment. We take responsibility for the complete cycle of the technology asset.",
+    "link": "Our Collaboration Models →"
   },
   "stats": {
-    "headline1": "In a world driven by noise,",
-    "headline2": "we choose clarity.",
-    "headline3": "We focus",
-    "headline4": "on long-term",
-    "headline5": "growth.",
-    "stat1_desc": "Years of experience\nin technology and\ndigital transformation",
-    "stat2_desc": "Companies impacted\nwith AI strategies\nand transformation",
-    "card1_title": "Multidisciplinary Team",
-    "card1_desc": "Experts in business, technology and strategy working together.",
-    "card2_title": "Proven Method",
-    "card2_desc": "Tangible and measurable results in every project we execute.",
-    "card3_title": "Holistic Vision",
-    "card3_desc": "360° perspective that integrates strategy, technology and operations."
+    "headline1": "We seek Return on Invested Capital.",
+    "headline3": "We impact the 4 dimensions",
+    "headline4": "of enterprise value:",
+    "headline5": "",
+    "stat1_desc": "",
+    "stat2_desc": "",
+    "card1_title": "Direct EBITDA (Cash-in-Pocket)",
+    "card1_desc": "We transform inefficient OPEX into net margin through automation and increase revenue through AI.",
+    "card2_title": "Equity Valuation (Equity Value)",
+    "card2_desc": "Every €1 saved in operating costs multiplies by your exit valuation.",
+    "card3_title": "Scalability (CAGR)",
+    "card3_desc": "We decouple your revenue growth from your cost growth. Grow more, spend less.",
+    "card4_title": "Multiple Expansion",
+    "card4_desc": "We convert manual companies into Tech-Enabled companies, increasing the multiple the market pays for them."
   },
   "approach": {
-    "label": "Our principles",
-    "title": "Radical honesty",
-    "tagline": "Radical honesty • Brutal pragmatism • Measurable results",
-    "headline1": "Where balance builds",
-    "headline2": "better outcomes.",
-    "headline_desc": "We focus on creating AI solutions that don't just look good on paper—they improve your bottom line.",
-    "dont_title": "We don't do",
-    "do_title": "We guarantee",
-    "dont": {
-      "item1_title": "\"Science Projects\"",
-      "item1_desc": "We don't do R&D without a validated Business Case. We don't experiment with your money.",
-      "item2_title": "Black Boxes",
-      "item2_desc": "If we can't explain how the algorithm makes the decision, it won't be implemented. Auditability is non-negotiable.",
-      "item3_title": "Selling Hours (Body Shopping)",
-      "item3_desc": "We oppose the archaic body shopping business model. Our revenue depends solely on solving problems.",
-      "item4_title": "Tech Hype",
-      "item4_desc": "We are the filter that separates signal from noise."
-    },
-    "do": {
-      "item1_title": "Forensic P&L Impact",
-      "item1_desc": "Every euro invested must have clear traceability towards cost savings or new revenue.",
-      "item2_title": "Risk Management",
-      "item2_desc": "We treat technology as a financial asset. We evaluate execution risk, technical debt, and opportunity cost.",
-      "item3_title": "Brutal Pragmatism",
-      "item3_desc": "The simplest solution that works is the right solution.",
-      "item4_title": "Execution Speed",
-      "item4_desc": "The market doesn't wait. Our diagnostic and validation sprints are measured in weeks, not quarters."
-    }
+    "label": "The Tauler Standard",
+    "title": "We're not a software factory. We're Efficiency Auditors.",
+    "description": "In a market saturated with empty promises and AI \"Hype\", we choose mathematical clarity. We don't sell what's trendy, we implement what works on the bottom line.",
+    "separator_title": "WHAT SETS US APART:",
+    "point1_title": "From Powerpoint to Production",
+    "point1_desc": "Strategic consultants don't know how to code. Developers don't know finance. We are the hybrid that closes that gap. We design the strategy and have the technical capacity to build it. No intermediaries.",
+    "point2_title": "The Value of \"NO\" (Fiduciary Judgement)",
+    "point2_desc": "Our greatest asset is not what we build, but what we prevent you from building. If a technology initiative doesn't have a clear financial return, we stop it before spending a euro. We protect your capital with the same diligence we would protect our own.",
+    "point3_title": "Start-up Speed, Corporate Rigor",
+    "point3_desc": "We combine the execution agility of a tech company with the risk management rigor of a large corporation. Short sprints, tangible deliverables, and strict financial control."
   },
   "services_section": {
-    "label": "Capabilities",
-    "title1": "Built through cycles.",
-    "title2": "Not moments.",
-    "closing": "In a noisy world of fleeting signals, we prioritize clarity.",
+    "label": "End-to-End Partner",
+    "title1": "You decide the level of intervention.",
+    "title2": "We set the standard.",
+    "closing": "We adapt our role to your need: Think, Build, or Direct.",
     "viewDetail": "View detail →",
+    "result_label": "Result",
     "service1": {
       "number": "01",
-      "title": "AI Strategic Diagnostic",
-      "intro": "We identify with precision:",
-      "point1": "which processes are worth automating,",
-      "point2": "where AI can improve efficiency or reduce costs,",
-      "point3": "which use cases have direct impact on the P&L,",
-      "point4": "and which initiatives shouldn't even be started.",
-      "result": "Result: clarity, focus, and real priorities."
+      "title": "STRATEGY (Business Architecture)",
+      "role": "We Think.",
+      "intro": "Ideal when you have capital but don't know where to invest it for maximum return.",
+      "point1": "Technology Capital Audit.",
+      "point2": "Operations and P&L Diagnostic.",
+      "point3": "Business Case and Investment Roadmap.",
+      "point4": "",
+      "result": "A financial Master Plan, not a technical document."
     },
     "service2": {
       "number": "02",
-      "title": "AI Action Plan",
-      "intro": "We design an AI adoption plan aligned with:",
-      "point1": "business strategy,",
-      "point2": "cost structure,",
-      "point3": "organization maturity level,",
-      "point4": "and actual execution capacity.",
-      "result": "It's not a technology plan, it's a business plan supported by AI."
+      "title": "BUILD (Full Execution)",
+      "role": "We Do.",
+      "intro": "Ideal when you know what you need and want a turnkey solution, without managing complex teams.",
+      "point1": "AI and Automation Solution Development.",
+      "point2": "End-to-End Technical Implementation.",
+      "point3": "Launch and Training.",
+      "point4": "",
+      "result": "Technology assets in production that generate cash from day 1."
     },
     "service3": {
       "number": "03",
-      "title": "AI Transformation Project Management",
-      "intro": "Executive project governance. We independently ensure its success and impact.",
-      "point1": "We conceptualize the solution.",
-      "point2": "We define architecture and approach.",
-      "point3": "We govern the project.",
-      "point4": "We recommend internal or external teams.",
-      "point5": "We act as an independent control point.",
-      "result": "The company executes. We guarantee judgement, focus, and coherence."
+      "title": "GOVERN (Technical Direction / F-CTO)",
+      "role": "We Advise.",
+      "intro": "Ideal when you have vendors or internal teams, but need external oversight, independent judgement, and strategic advisory.",
+      "point1": "External Project Tracking and Audit.",
+      "point2": "Independent Technical Advisory.",
+      "point3": "Budget Control and Vendor Quality Assessment.",
+      "point4": "",
+      "result": "Independent judgement to validate deliveries and protect your investment."
     },
     "service4": {
       "number": "04",
-      "title": "Strategic Technology Office",
-      "intro": "The new most important role in the company.",
-      "designed_for": "Designed for:",
-      "target1": "Boards of directors",
-      "target2": "Investment funds",
-      "target3": "Companies with significant revenue and complex processes",
-      "we_provide": "We provide:",
-      "provide1": "Technology criteria aligned with finance and strategy",
-      "provide2": "Board advisory",
-      "provide3": "Continuous technology audit",
-      "provide4": "M&A process support",
-      "provide5": "Didactic work for senior executives",
-      "result": "We don't make isolated technical decisions. We make decisions that affect value, risk, and growth."
+      "title": "PE PRACTICE",
+      "role": "Investment Thesis Assurance.",
+      "intro": "The specialized service for Funds and Corporate Transactions.",
+      "point1": "Pre-Deal: Technology Due Diligence.",
+      "point2": "Post-Deal: Value Creation Shock Plan (Tech-Capital Value Creation).",
+      "point3": "Exit-Readiness: Company preparation to defend a Tech-Enabled valuation.",
+      "point4": "",
+      "result": "Valuation Multiple Expansion and transaction risk mitigation.",
+      "viewDetail": "View Investment Thesis →"
     }
   },
   "benefits": {
-    "label": "Value",
+    "label": "Impact",
     "title1": "What the client",
     "title2": "gets",
-    "benefit1": "Better informed decisions.",
-    "benefit2": "Less technology risk.",
-    "benefit3": "AI projects with real impact.",
-    "benefit4": "Time savings and executive focus.",
-    "benefit5": "Peace of mind in critical moments.",
-    "benefit6": "Impactful AI for tomorrow's companies."
+    "benefit1": "Capital Judgement: You stop spending on technology, you start investing in assets.",
+    "benefit2": "Operational Velocity: Drastic reduction in Time-to-Market.",
+    "benefit3": "Controlled Risk: Elimination of uncertainty in complex projects.",
+    "benefit4": "Valuation Increase: Direct impact on the company's Enterprise Value.",
+    "benefit5": "Peace of Mind: Knowing that an expert partner takes responsibility for the final result.",
+    "benefit6": "Measurable ROI: Every technology investment has clear traceability to financial results."
   },
   "tauler_group": {
     "label": "Excellence",
-    "title": "With the excellence of Tauler Group",
-    "description": "Visit the Tauler Group page to learn more about our team and the group."
+    "title": "Tauler Group. The Strategic Technology Office.",
+    "description": "We're not vendors. We're your partners in technology capital allocation. Schedule an initial diagnostic session to evaluate your efficiency potential.",
+    "cta": "Request Audit"
+  },
+  "team": {
+    "eyebrow": "OUR TEAM",
+    "headline1": "EXPERIENCED STRATEGISTS",
+    "headline2": "AND EXPERT TECHNOLOGISTS",
+    "description": "At Tauler Group, we combine strategy, AI, finance, and business to elevate the businesses of tomorrow.",
+    "alvaro": {
+      "name": "Álvaro Toledo",
+      "title": "Co-Founder & Co-CEO",
+      "qualification1_title": "Data Science and Artificial Intelligence Engineer",
+      "qualification1_desc": "Universidad Politécnica de Madrid.",
+      "qualification2_title": "Development and Scaling",
+      "qualification2_desc": "Manages development and operations teams for AI projects.",
+      "qualification3_title": "Tauler Group",
+      "qualification3_desc": "Leads product vision and technical execution.",
+      "description1": "Álvaro directs the technological and operations strategy at Tauler Group. His focus is on integrating scalable AI systems that directly impact operational efficiency.",
+      "description2": "He combines AI engineering with a clear product and market vision, ensuring that technology solves real business problems."
+    },
+    "manuel": {
+      "name": "Manuel Toledo",
+      "title": "Co-Founder & Co-CEO",
+      "qualification1_title": "Mathematician",
+      "qualification1_desc": "Universidad Complutense de Madrid and Universidad de La Laguna.",
+      "qualification2_title": "Operations and Finance",
+      "qualification2_desc": "Resource management and operational process optimization.",
+      "qualification3_title": "Business Development",
+      "qualification3_desc": "Leadership in opening new markets and relationships with key clients.",
+      "description1": "Manuel brings strategic and financial vision to Tauler Group. His experience allows translating the technical capabilities of AI into solid and sustainable business plans.",
+      "description2": "He ensures that each project is not only technically viable, but generates a clear and measurable return on investment for our clients."
+    }
   },
   "contact": {
     "label": "Let's talk",
@@ -353,6 +368,129 @@
   },
   "common": {
     "pageNotFound": "Page not found"
+  },
+  "pe": {
+    "teaser": {
+      "eyebrow": "Practice Area",
+      "headline": "PE Practice",
+      "headline_accent": "Practice.",
+      "subheadline": "We operate technology as a capital firm: We optimize EBITDA through algorithmic efficiency. Our success depends on the return of technological transformation.",
+      "hook_label": "Key Insight",
+      "hook": "\"Technology is the biggest value destroyer in a transaction if ignored—and the biggest multiplier if governed.\"",
+      "cta": "Explore PE Solutions"
+    },
+    "hero": {
+      "eyebrow": "Private Equity Practice",
+      "headline": "Tech-Capital Value Creation.",
+      "headline_accent": "We transform technology into Equity Value.",
+      "subheadline": "We act as technology Operating Partners for Private Equity Funds and companies in transaction processes. We mitigate risk at entry. We maximize the multiple at exit.",
+      "cta_primary": "Analyze Investment Thesis",
+      "cta_secondary": "Explore Scenarios"
+    },
+    "problem": {
+      "eyebrow": "The Thesis",
+      "headline": "Technology is the biggest value destroyer if ignored, and the biggest multiplier if governed.",
+      "intro": "In the context of a transaction, technology is often treated as a \"black box\" or a cost center (IT). This is a miscalculation. Today, operational efficiency and technological scalability are the main determinants of EBITDA quality and, therefore, of the final valuation of an asset.",
+      "intro2": "Tauler Group does not operate as a service provider. We operate as Technology Asset Managers. Our function is to ensure that every euro of digital CAPEX has a direct return on the bottom line and on exit valuation.",
+      "conflict_title": "",
+      "vendor_title": "",
+      "vendor_desc": "",
+      "fund_title": "",
+      "fund_desc": "",
+      "result_title": "",
+      "result_desc": "",
+      "stat": ""
+    },
+    "solution": {
+      "eyebrow": "The Financial Rationale",
+      "headline": "Quadratic Impact on Return.",
+      "headline_accent": "Our intervention acts simultaneously on four dimensions of value:",
+      "description": "",
+      "levers": {
+        "title": "The 4 Levers",
+        "lever1_title": "01. Cash Generation (EBITDA Uplift)",
+        "lever1_desc": "Transformation of inefficient OPEX into operating margin through process automation and resource optimization. Each unit of eliminated operating cost directly impacts available cash flow.",
+        "lever2_title": "02. Equity Valuation (Equity Value)",
+        "lever2_desc": "Multiplier effect: recurring operational savings are capitalized at the exit multiple. EBITDA improvement translates into equity valuation through the applicable market multiple.",
+        "lever3_title": "03. Operating Leverage (Scalability)",
+        "lever3_desc": "Structural decoupling between revenue growth and cost growth. The technological architecture enables scaling operations without proportional increase in the fixed cost base.",
+        "lever4_title": "04. Multiple Expansion (Risk Reduction)",
+        "lever4_desc": "Risk profile transformation through the transition from labor-intensive operational models to Tech-Enabled models. The reduction in operational risk and human dependency enables defending superior valuation multiples in exit processes."
+      },
+      "tags": []
+    },
+    "scenarios": {
+      "eyebrow": "Investment Lifecycle",
+      "headline": "End-to-End Intervention.",
+      "subheadline": "We cover the complete asset cycle, from risk detection to sale preparation.",
+      "pre": {
+        "type": "I. PRE-DEAL / PRE-MANDATE",
+        "title": "Forensic Tech Due Diligence",
+        "subtitle": "Buy-Side: Before signing, we audit the reality under the hood.",
+        "description": "",
+        "items": [
+          "Hidden Tech Debt Identification: How much \"surprise\" CAPEX will the asset require?",
+          "Scalability Assessment: Will the technology support the Fund's growth plan?",
+          "Red Flag Report: Critical risks in security, intellectual property, and vendor dependency."
+        ]
+      },
+      "post": {
+        "type": "II. HOLDING PERIOD / VALUE CREATION",
+        "title": "Efficiency Shock Plan",
+        "subtitle": "Buy-Side: Execution of the value creation plan to improve operating cash flow.",
+        "description": "",
+        "items": [
+          "Back-Office Automation: Reduction of administrative burden in Finance and Operations.",
+          "Revenue Generation: AI-based dynamic pricing, automated lead generation systems, conversion optimization, and average ticket increase."
+        ]
+      },
+      "exit": {
+        "type": "III. EXIT READINESS / SELL-SIDE",
+        "title": "Valuation Defense",
+        "subtitle": "Sell-Side: We prepare the company to withstand buyer scrutiny.",
+        "description": "",
+        "items": [
+          "Architecture and process cleanup.",
+          "Scalability documentation.",
+          "Technology asset narrative to defend the sale price."
+        ]
+      }
+    },
+    "waterfall": {
+      "eyebrow": "Value Creation Model",
+      "headline": "The Financial Waterfall",
+      "description": "We treat technology as a financial lever, not an IT expense.",
+      "caption": "Illustrative model based on typical engagement outcomes. Actual results vary by company.",
+      "bars": {
+        "current": "Current EBITDA",
+        "automation": "+ Automation Savings",
+        "ai": "+ AI Revenue Uplift",
+        "fees": "- Tauler Fees",
+        "adjusted": "Adjusted EBITDA"
+      }
+    },
+    "offer": {
+      "badge": "Alignment Model",
+      "headline": "Aligned Incentives (Risk Sharing).",
+      "description": "We understand the mathematics of return. We don't want to be another fixed cost (OPEX) in your P&L; we want to be partners in value creation.",
+      "pricing_intro": "",
+      "audit_fee": "Audit Fee (Cost): A bounded fixed fee to cover the operating costs of the initial diagnosis or intervention.",
+      "success_fee": "Success Fee (Investment): A variable component directly linked to unlocked recurring EBITDA or transaction success.",
+      "guarantee": "If we don't improve operating margin, our cost is marginal. If we improve it, we share a fraction of the equity value created.",
+      "pricing": {
+        "diagnosis": { "label": "Diagnosis", "value": "Fixed Fee" },
+        "implementation": { "label": "Implementation", "value": "Success-Based" },
+        "ongoing": { "label": "Ongoing", "value": "Value-Linked" }
+      }
+    },
+    "contact": {
+      "headline": "Let's talk about your next transaction",
+      "headline_accent": "or about how to unlock value in your current portfolio.",
+      "description": "",
+      "cta": "Contact PE Practice",
+      "email_label": "Or reach us directly:",
+      "calendly_placeholder": "Calendly Integration"
+    }
   }
 }
 

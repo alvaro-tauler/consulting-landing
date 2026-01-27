@@ -1050,3 +1050,107 @@ img[data-loading="true"] {
 .section-dark .btn-rect:hover {
   box-shadow: 0 10px 40px -10px rgba(255, 255, 255, 0.2);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PRIVATE EQUITY / DARK MODE SECTIONS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* PE Page scrollbar */
+.bg-slate-950 ::-webkit-scrollbar-thumb {
+  background: rgba(67, 107, 224, 0.3);
+}
+
+.bg-slate-950 ::-webkit-scrollbar-thumb:hover {
+  background: rgba(67, 107, 224, 0.5);
+}
+
+/* Gold border glow animation */
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+  }
+}
+
+.gold-glow {
+  animation: goldPulse 3s ease-in-out infinite;
+}
+
+/* Waterfall chart bar animation */
+@keyframes barGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.waterfall-bar {
+  transform-origin: bottom;
+  animation: barGrow 0.8s var(--ease-out-expo) forwards;
+}
+
+/* PE section text selection */
+.bg-slate-950 ::selection,
+.bg-slate-900 ::selection {
+  background-color: #436be0;
+  color: white;
+}
+
+/* Gradient text utility for PE */
+.text-gradient-pe {
+  background: linear-gradient(135deg, #436be0 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* PE Card hover effects */
+.pe-card {
+  transition: all 0.5s var(--ease-out-expo);
+}
+
+.pe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(67, 107, 224, 0.2);
+}
+
+/* Scenario card active state */
+.scenario-card-active {
+  border-color: rgba(67, 107, 224, 0.4);
+  background: linear-gradient(135deg, rgba(67, 107, 224, 0.1) 0%, transparent 100%);
+}
+
+/* SVG line drawing animation */
+@keyframes drawPath {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw {
+  stroke-dasharray: 1;
+  animation: drawPath 1.5s var(--ease-out-expo) forwards;
+}
+
+/* Node pulse animation for hero */
+@keyframes nodePulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+.node-pulse {
+  animation: nodePulseGlow 2s ease-in-out infinite;
+}
