@@ -2219,8 +2219,8 @@ function PEContactForm() {
 
     // HubSpot form submission
     // Replace PORTAL_ID and FORM_ID with your actual HubSpot values
-    const hubspotPortalId = 'YOUR_HUBSPOT_PORTAL_ID'
-    const hubspotFormId = 'YOUR_HUBSPOT_FORM_ID'
+    const hubspotPortalId = '146295013'
+    const hubspotFormId = 'e3c23dc7-21b0-48b2-99b1-e574824b6d49'
     
     const hubspotData = {
       fields: [
@@ -2246,7 +2246,7 @@ function PEContactForm() {
         },
         {
           objectTypeId: '0-1',
-          name: 'message',
+          name: 'en_que_podemos_ayudarte',
           value: formData.message
         }
       ],
